@@ -1,0 +1,46 @@
+
+<div class="pure-u-2-5 foodbox">
+<h2>These burger are ready for a Devouring!</h2>
+<ul id = "readytoeat" class="serverup">
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        <form class="pure-form" action="burger/update/{{this.id}}?_method=PUT" method="POST">
+        {{this.burger_name}}
+          <input type="hidden" name="devoured" value="true">
+          <button class="pure-button pure-button-primary" type="submit">Devour?</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+</div>
+
+<div class="pure-u-2-5 foodbox">
+  <h2>These puppies are done.. want more?</h2>
+  <ul id ="eaten">
+    {{#each burgers}}
+      {{#if this.devoured}}
+        <li>
+          <form class="pure-form" action="/burger/delete/{{this.id}}?_method=DELETE" method="POST">
+          {{this.burger_name}}
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button class="pure-button pure-button-primary" type="submit">Bye Bye Burger!</button>
+          </form>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>
+</div>
+<div class="pure-u-1-1">
+
+  <h2>What burger do you have in mind?</h2>
+  <form class="create-update-form" action="burger/create" method="POST">
+
+    <div class="form-group">
+      <input type="text" id="ca" name="name">
+    </div>
+
+    <button class="pure-button pure-button-primary" type="submit">Add a Bur-GER</button>
+  </form>

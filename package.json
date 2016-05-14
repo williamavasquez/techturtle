@@ -1,0 +1,28 @@
+{
+  "name": "week-14-homework",
+  "version": "1.0.0",
+  "description": "Node/Express/Handlebars all come together with a ORM",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamavasquez/week-14-homework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamavasquez/week-14-homework/issues"
+  },
+  "homepage": "https://github.com/williamavasquez/week-14-homework#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2",
+    "normalize.css": "^4.1.1"
+  }
+}

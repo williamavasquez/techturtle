@@ -1,0 +1,24 @@
+body {
+  background-color: #e2c340;
+  text-align-last: center;
+}
+
+.foodbox{
+margin: 0 auto;
+}
+ul {
+  list-style: none;
+}
+.pure-button {
+  margin: 10px;
+}
+#readytoeat{
+
+  background-color: lightgrey;
+}
+
+#eaten {
+  font-size: 15;
+  color:white;
+  background-color: grey;
+}
