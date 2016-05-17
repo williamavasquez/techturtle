@@ -10,6 +10,10 @@ router.get('/shop', function(req,res) {
 		res.render('shop');
 });
 
+router.get('/product', function(req,res) {
+		res.render('product');
+});
+
 router.get('/inventory', function(req,res) {
 		res.render('inventory');
 });
