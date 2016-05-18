@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-3"><img src="/assets/images/large_cpu.png" alt="Large Computer"></div>
+	<div class="col-md-3">
+	<h3>Dell XPS 9000</h3>
+	by Dell.
+	<hr><h4>
+	Price: $1,239.95<br>
+	In Stock</h4><br>
+	<div class="dropdown">
+	  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Qty
+	  <span class="caret"></span></button>
+	  <ul class="dropdown-menu">
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	  </ul>
+	</div><br>
+	<button type="button" class="btn btn-success">ADD TO CART</button>
+	<hr>
+
+                {{#each inventory}}
+                    {{this.sku}}
+                    {{this.barcode}}
+                    {{this.productDescription}}
+                    {{this.productImage}}
+                    {{this.category}}
+                    {{this.quantity}}
+                    {{this.price}}
+                    {{this.supplier}}
+                {{/each}}
+
+	
+	Performance you can rely on.<br>
+	The essential business-class features and options that deliver the performance small and growing businesses need.<br>
+	Get $22 back in rewards
+</div>
+	<div class="col-md-3"></div>
+</div>
+<div class="row recommended">
+	<div class="col-md-3"></div>
+	<div class="col-md-3">&nbsp;</div>
+	<div class="col-md-3"></div>
+	<div class="col-md-3"></div>
+</div>

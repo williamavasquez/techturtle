@@ -1,0 +1,18 @@
+<table id="shop" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each inventory}}
+            <tr>
+                <td data-search="{{this.productName}}" align="center">
+                    <a href="/product"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
+                    {{this.productName}}<br>
+                    {{this.price}} by {{this.supplier}}
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
