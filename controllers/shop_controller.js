@@ -7,15 +7,27 @@ router.get('/', function(req,res) {
 });
 
 router.get('/shop', function(req,res) {
-		res.render('shop');
+	shop.all(function(data){
+		var hbsObject = {inventory : data}
+		console.log(hbsObject)
+		res.render('shop', hbsObject);
+	});
 });
 
 router.get('/product', function(req,res) {
-		res.render('product');
+	shop.all(function(data){
+		var hbsObject = {inventory : data}
+		console.log(hbsObject)
+		res.render('product', hbsObject);
+	});
 });
 
 router.get('/inventory', function(req,res) {
-		res.render('inventory');
+	shop.all(function(data){
+		var hbsObject = {inventory : data}
+		console.log(hbsObject)
+		res.render('inventory', hbsObject);
+	});
 });
 
 router.get('/products', function(req,res) {

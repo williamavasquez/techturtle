@@ -24,6 +24,7 @@ CREATE TABLE inventory
 (
     barcode varchar(255) NOT NULL,
     sku varchar(255) NOT NULL,
+    productName varchar(255) NOT NULL,
     productDescription varchar(255) NOT NULL,
     productImage varchar(255) NOT NULL,
     category varchar(255) NOT NULL,

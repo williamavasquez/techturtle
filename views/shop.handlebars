@@ -9,10 +9,13 @@
     </thead>
     <tbody>
         <tr>
-            <td data-search="Dell XPS 9000" align="center">
-            	<a href="/product"><img src="/assets/images/cpu_1.png" alt="Computer Name"></a><br>
-            	Dell XPS 9000<br>
-            	$1,239.95 by Dell</td>
+            {{#each inventory}}
+                <td data-search="{{this.productName}}" align="center">
+                    <a href="/product"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
+                    {{this.productName}}<br>
+                    {{this.price}} by {{this.supplier}}
+                </td>
+            {{/each}}
             <td data-search="Dell XPS 8000" align="center">
             	<img src="/assets/images/cpu_2.png" alt="Computer Name"></a><br>
             	Dell XPS 8000<br>

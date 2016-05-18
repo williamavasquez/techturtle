@@ -3,7 +3,7 @@ var orm = require('../config/orm.js');
 
 var shop = {
 	all: function(cb) {
-		orm.all('shop', function(res){
+		orm.all('inventory', function(res){
 			cb(res);
 		});
 	},
