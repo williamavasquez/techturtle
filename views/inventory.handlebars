@@ -15,7 +15,7 @@
     <tbody>
         {{#each inventory}}
             <tr>
-                <td><a href="#" data-toggle="modal" data-target="#myModal"><img src="{{this.productImage}}" width="50px" height="50px" alt="{{this.productName}} {{this.productDescription}}"></a></td>
+                <td><a href="#" data-toggle="modal" data-target="#productInventory-{{this.barcode}}"><img src="{{this.productImage}}" width="50px" height="50px" alt="{{this.productName}} {{this.productDescription}}"></a></td>
                 <td data-search="{{this.productName}}">{{this.productName}}</td>
                 <td>{{this.productDescription}}</td>
                 <td>{{this.sku}}</td>
@@ -27,9 +27,8 @@
             </tr>
 
             <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
+            <div id="productInventory-{{this.barcode}}" class="modal fade" role="dialog">
               <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
@@ -71,7 +70,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
-
               </div>
             </div>
         {{/each}} 
