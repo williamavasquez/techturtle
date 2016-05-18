@@ -35,7 +35,7 @@ router.put('/inventory/update/:barcode', function(req,res) {
 
 	console.log('condition', condition);
 
-	shop.update({'productName' : req.body.productName}, condition, function(data){
+	shop.update({'productName ' : req.body.productName, ', productDescription ' : req.body.productDescription, ', sku ' : req.body.sku, ', category ' : req.body.category, ', quantity ' : req.body.quantity, ', price ' : req.body.price, ', supplier ' : req.body.supplier}, condition, function(data){
 		res.redirect('/inventory');
 	});
 });

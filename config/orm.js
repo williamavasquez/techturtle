@@ -11,14 +11,17 @@ function printQuestionMarks(num){
 }
 
 function objToSql(ob){
+  console.log("this is the thing i need to reformat:", ob)
   //column1=value, column2=value2,...
   var arr = [];
 
   for (var key in ob) {
-    arr.push(key + '=' + ob[key]);
+    arr.push(key + '= ' + "'" + ob[key] + "'");
   }
 
-  return arr.toString();
+  return arr.join(" ");
+  // return "productName='asdfasdf'";
+  /////// method two: should return "product_name = "asdasdasd"
 }
 
 var orm = {
@@ -53,9 +56,9 @@ var orm = {
 
     update: function(table, objColVals, condition, cb) {
     var queryString = 'UPDATE ' + table;
-
+    console.log(objToSql(objColVals));
     queryString += ' SET ';
-    queryString += objToSql(objColVals);
+    queryString += objToSql(objColVals).toString();
     queryString += ' WHERE ';
     queryString += condition;
 
