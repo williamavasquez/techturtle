@@ -23,13 +23,13 @@
 	<div class="header clearfix">
 		<nav>
 		  <ul class="nav nav-pills pull-right">
-		    <li role="presentation"><a href="/">Home</a></li>
+		    <li role="presentation"><a href="/">Welcome {{#each user}}{{this.name}}{{/each}}</a></li>
 		    <li role="presentation"><a href="/shop">Shop</a></li>
 		    <li role="presentation"><a href="/inventory">Inventory</a></li>
 		    <li role="presentation"><a href="/sign_in">Sign In</a></li>
 		  </ul>
 		</nav>
-		<span class="text-muted"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></span>
+		<span class="text-muted"><a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a></span>
 	</div>
 
 	{{{ body }}}
