@@ -30,6 +30,16 @@ router.get('/inventory', function(req,res) {
 	});
 });
 
+router.put('/inventory/update/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+
+	console.log('condition', condition);
+
+	shop.update({'productName' : req.body.productName}, condition, function(data){
+		res.redirect('/inventory');
+	});
+});
+
 router.get('/products', function(req,res) {
 		res.render('products');
 });

@@ -15,7 +15,7 @@ var shop = {
 	},
 
 	update: function(objColVals, condition, cb) {
-		orm.update('shop', objColVals, condition, function(res){
+		orm.update('inventory', objColVals, condition, function(res){
 			cb(res);
 		});
 	},
