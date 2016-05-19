@@ -48,6 +48,22 @@ router.delete('/inventory/delete/:barcode', function(req,res) {
 	});
 });
 
+router.get('/orders', function(req,res) {
+	shop.allOrders(function(data){
+		var hbsObject = {orders : data}
+		console.log(hbsObject)
+		res.render('orders', hbsObject);
+	});
+});
+
+router.delete('/orders/delete/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
+	shop.deleteOrders(condition, function(data){
+		res.redirect('/orders')
+	});
+});
+
 router.put('/inventory/update/:barcode', function(req,res) {
 	var condition = 'barcode = ' + req.params.barcode;
 	console.log('condition', condition);
