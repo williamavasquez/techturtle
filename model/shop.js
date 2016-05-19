@@ -9,7 +9,7 @@ var shop = {
 	},
 	//cols and vals are arrays
 	create: function(cols, vals, cb) {
-		orm.create('shop', cols, vals, function(res){
+		orm.create('inventory', cols, vals, function(res){
 			cb(res);
 		});
 	},
@@ -21,7 +21,7 @@ var shop = {
 	},
 
 	delete: function(condition, cb) {
-		orm.delete('shop', condition, function(res){
+		orm.delete('inventory', condition, function(res){
 			cb(res);
 		});
 	}
