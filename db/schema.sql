@@ -34,14 +34,13 @@ CREATE TABLE inventory
     supplier varchar(255),
     PRIMARY KEY (sku)
 );
--- Doesnt seem to work
+
 CREATE TABLE orders
 (
-    orderNumber int,
-    sku varchar,
+    orderNumber int ZEROFILL NOT NULL AUTO_INCREMENT,
+    barcode varchar(255) NOT NULL,
     quantityPurchased int NOT NULL,
-	userId int,
-	FOREIGN KEY (userId) REFERENCES user(userId),
-	FOREIGN KEY (sku) REFERENCES inventory(sku),
-	FOREIGN KEY (orderNumber) REFERENCES ordersGen(orderNumber)
+    userId int,
+    FOREIGN KEY (userId) REFERENCES user(userId),
+    FOREIGN KEY (orderNumber) REFERENCES ordersGen(orderNumber)
 );

@@ -14,19 +14,16 @@ router.get('/shop', function(req,res) {
 		  return Math.floor(index/n);
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
-		console.log(lists);
+		//console.log(lists);
 		var hbsObject = {inventory : lists}
-		console.log(hbsObject)
+		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
 });
 
-router.get('/product', function(req,res) {
-	shop.all(function(data){
-		var hbsObject = {inventory : data}
-		console.log(hbsObject)
-		res.render('product', hbsObject);
-	});
+router.get('/product/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
 });
 
 router.get('/inventory', function(req,res) {
@@ -40,6 +37,30 @@ router.get('/inventory', function(req,res) {
 router.post('/inventory/create', function(req,res) {
 	shop.create(['productName', 'productDescription', 'sku', 'category', 'productImage', 'quantity', 'price', 'supplier', 'barcode'], [req.body.productName, req.body.productDescription, req.body.sku, req.body.category, req.body.productImage, req.body.quantity, req.body.price, req.body.supplier, req.body.barcode], function(data){
 		res.redirect('/inventory')
+	});
+});
+
+router.delete('/inventory/delete/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
+	shop.delete(condition, function(data){
+		res.redirect('/inventory')
+	});
+});
+
+router.get('/orders', function(req,res) {
+	shop.allOrders(function(data){
+		var hbsObject = {orders : data}
+		console.log(hbsObject)
+		res.render('orders', hbsObject);
+	});
+});
+
+router.delete('/orders/delete/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
+	shop.deleteOrders(condition, function(data){
+		res.redirect('/orders')
 	});
 });
 

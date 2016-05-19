@@ -7,7 +7,13 @@ var shop = {
 			cb(res);
 		});
 	},
-	//cols and vals are arrays
+
+	allOrders: function(cb) {
+		orm.all('orders', function(res){
+			cb(res);
+		});
+	},
+
 	create: function(cols, vals, cb) {
 		orm.create('inventory', cols, vals, function(res){
 			cb(res);
@@ -22,6 +28,12 @@ var shop = {
 
 	delete: function(condition, cb) {
 		orm.delete('inventory', condition, function(res){
+			cb(res);
+		});
+	},
+
+	deleteOrders: function(condition, cb) {
+		orm.delete('orders', condition, function(res){
 			cb(res);
 		});
 	}
