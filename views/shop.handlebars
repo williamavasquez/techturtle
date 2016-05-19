@@ -12,7 +12,7 @@
             <tr>
                 {{#each this}}
                     <td data-search="{{this.productName}}" align="center">
-                        <a href="/product"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
+                        <a href="/product/{{this.barcode}}"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
                         {{this.productName}}<br>
                         {{this.price}} by {{this.supplier}}
                     </td>

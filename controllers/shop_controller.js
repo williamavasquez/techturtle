@@ -14,19 +14,16 @@ router.get('/shop', function(req,res) {
 		  return Math.floor(index/n);
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
-		console.log(lists);
+		//console.log(lists);
 		var hbsObject = {inventory : lists}
-		console.log(hbsObject)
+		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
 });
 
-router.get('/product', function(req,res) {
-	shop.all(function(data){
-		var hbsObject = {inventory : data}
-		console.log(hbsObject)
-		res.render('product', hbsObject);
-	});
+router.get('/product/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
 });
 
 router.get('/inventory', function(req,res) {
