@@ -1,0 +1,85 @@
+<table id="shop" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each inventory}}
+            <tr>
+                {{#each this}}
+                    <td data-search="{{this.productName}}" align="center">
+                        <a href="#" data-toggle="modal" data-target="#shop-{{this.barcode}}"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
+                        {{this.productName}}<br>
+                        {{this.price}} by {{this.supplier}}
+                    </td>
+                    <!-- Modal Add New -->
+                    <div id="shop-{{this.barcode}}" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><img src="/assets/images/logo_small.jpg" alt="Tech Turtle"></h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="{{this.productImage}}" alt="{{this.productName}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <h1>{{this.productName}}</h1>
+                                    SKU: {{this.sku}} by {{this.supplier}} 
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Price: ${{this.price}}</h3>
+                                    {{this.productDescription}}<br><br>
+                                  
+                                </div>
+                            </div>
+
+
+
+
+
+                            <form action="inventory/create" method="POST" class="form col-md-12 center-block">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                              <select class="form-control" id="sel1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                              </select>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <button class="btn btn-success btn-md btn-block">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {{/each}}
+            </tr>
+        {{/each}}
+        
+    </tbody>
+</table>

@@ -15,10 +15,12 @@ function objToSql(ob){
   var arr = [];
 
   for (var key in ob) {
-    arr.push(key + '=' + ob[key]);
+    arr.push(key + '= ' + "'" + ob[key] + "'");
   }
 
-  return arr.toString();
+  return arr.join(" ");
+  // return "productName='asdfasdf'";
+  /////// method two: should return "product_name = "asdasdasd"
 }
 
 var orm = {
@@ -34,13 +36,12 @@ var orm = {
     create: function(table, cols, vals, cb) {
       var queryString = 'INSERT INTO ' + table;
 
+      queryString += ' (productName, productDescription, sku, category, productImage, quantity, price, supplier, barcode) ';
+
+      queryString += 'VALUES';
+
       queryString += ' (';
-      queryString += cols.toString();
-      queryString += ',s_timestamp';
-      queryString += ') ';
-      queryString += 'VALUES (';
-      queryString += printQuestionMarks(vals.length);
-      queryString += ',now()';
+      queryString = queryString + printQuestionMarks(vals.length);
       queryString += ') ';
 
       console.log(queryString)
@@ -53,9 +54,9 @@ var orm = {
 
     update: function(table, objColVals, condition, cb) {
     var queryString = 'UPDATE ' + table;
-
+    console.log(objToSql(objColVals));
     queryString += ' SET ';
-    queryString += objToSql(objColVals);
+    queryString += objToSql(objColVals).toString();
     queryString += ' WHERE ';
     queryString += condition;
 
@@ -65,19 +66,16 @@ var orm = {
       cb(result);
     });
   },
+  delete: function(table, condition, cb){
+    var queryString = 'DELETE FROM ' + table;
+    queryString = queryString + ' WHERE ';
+    queryString = queryString + condition;
 
-    delete: function(table, condition, cb) {
-      var queryString = 'DELETE FROM ' + table;
-
-      queryString += ' WHERE ';
-      queryString += condition;
-
-      console.log(queryString)
-      connection.query(queryString, function(err, result) {
-        if (err) throw err;
-        cb(result);
-      });
-    }
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  }
 };
 
 module.exports = orm;
