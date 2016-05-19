@@ -43,6 +43,14 @@ router.post('/inventory/create', function(req,res) {
 	});
 });
 
+router.delete('/inventory/delete/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
+	shop.delete(condition, function(data){
+		res.redirect('/inventory')
+	});
+});
+
 router.put('/inventory/update/:barcode', function(req,res) {
 	var condition = 'barcode = ' + req.params.barcode;
 	console.log('condition', condition);
