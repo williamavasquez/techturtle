@@ -1,3 +1,4 @@
+<a href="#" data-toggle="modal" data-target="#addNew">Add Product</a><br><br>
 <table id="inventory" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -74,3 +75,53 @@
         {{/each}} 
     </tbody>
 </table>
+
+<!-- Modal Add New -->
+<div id="addNew" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add New</h4>
+      </div>
+      <div class="modal-body">
+        <form action="inventory/create" method="POST" class="form col-md-12 center-block">
+            <div class="form-group">
+              Name <input type="text" class="form-control input-lg" name="productName">
+            </div>
+            <div class="form-group">
+              Description <input type="text" class="form-control input-lg" name="productDescription">
+            </div>
+            <div class="form-group">
+              SKU <input type="text" class="form-control input-lg" name="sku">
+            </div>
+            <div class="form-group">
+              Barcode <input type="text" class="form-control input-lg" name="barcode">
+            </div>
+            <div class="form-group">
+              Image <input type="text" class="form-control input-lg" name="productImage">
+            </div>
+            <div class="form-group">
+              Category <input type="text" class="form-control input-lg" name="category">
+            </div>
+            <div class="form-group">
+              Quantity <input type="text" class="form-control input-lg" name="quantity">
+            </div>
+            <div class="form-group">
+              Price <input type="text" class="form-control input-lg" name="price">
+            </div>
+            <div class="form-group">
+              Supplier <input type="text" class="form-control input-lg" name="supplier">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block">Add New</button>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
