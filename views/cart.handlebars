@@ -18,17 +18,18 @@
 	</div><br>
 	<button type="button" class="btn btn-success">ADD TO CART</button>
 	<hr>
-
-                {{#each inventory}}
-                    {{this.sku}}
-                    {{this.barcode}}
-                    {{this.productDescription}}
-                    {{this.productImage}}
-                    {{this.category}}
-                    {{this.quantity}}
-                    {{this.price}}
-                    {{this.supplier}}
-                {{/each}}
+    {{#each inventory}}
+    	{{#if "5 == 3"}}
+		    {{this.sku}}
+		    {{this.barcode}}
+		    {{this.productDescription}}
+		    {{this.productImage}}
+		    {{this.category}}
+		    {{this.quantity}}
+		    {{this.price}}
+		    {{this.supplier}}
+	    {{/if}}
+    {{/each}}
 
 	
 	Performance you can rely on.<br>

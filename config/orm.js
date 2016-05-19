@@ -31,6 +31,7 @@ var orm = {
             cb(result);
         });
     },
+
     //vals is an array of values that we want to save to cols
     //cols are the columns we want to insert the values into
     create: function(table, cols, vals, cb) {
@@ -66,19 +67,16 @@ var orm = {
       cb(result);
     });
   },
+  delete: function(table, condition, cb){
+    var queryString = 'DELETE FROM ' + table;
+    queryString = queryString + ' WHERE ';
+    queryString = queryString + condition;
 
-    delete: function(table, condition, cb) {
-      var queryString = 'DELETE FROM ' + table;
-
-      queryString += ' WHERE ';
-      queryString += condition;
-
-      console.log(queryString)
-      connection.query(queryString, function(err, result) {
-        if (err) throw err;
-        cb(result);
-      });
-    }
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  }
 };
 
 module.exports = orm;
