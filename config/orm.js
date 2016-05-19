@@ -11,7 +11,6 @@ function printQuestionMarks(num){
 }
 
 function objToSql(ob){
-  console.log("this is the thing i need to reformat:", ob)
   //column1=value, column2=value2,...
   var arr = [];
 
@@ -37,13 +36,12 @@ var orm = {
     create: function(table, cols, vals, cb) {
       var queryString = 'INSERT INTO ' + table;
 
+      queryString += ' (productName, productDescription, sku, category, productImage, quantity, price, supplier, barcode) ';
+
+      queryString += 'VALUES';
+
       queryString += ' (';
-      queryString += cols.toString();
-      queryString += ',s_timestamp';
-      queryString += ') ';
-      queryString += 'VALUES (';
-      queryString += printQuestionMarks(vals.length);
-      queryString += ',now()';
+      queryString = queryString + printQuestionMarks(vals.length);
       queryString += ') ';
 
       console.log(queryString)

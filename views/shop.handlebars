@@ -2,16 +2,21 @@
     <thead>
         <tr>
             <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         {{#each inventory}}
             <tr>
-                <td data-search="{{this.productName}}" align="center">
-                    <a href="/product"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
-                    {{this.productName}}<br>
-                    {{this.price}} by {{this.supplier}}
-                </td>
+                {{#each this}}
+                    <td data-search="{{this.productName}}" align="center">
+                        <a href="/product"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
+                        {{this.productName}}<br>
+                        {{this.price}} by {{this.supplier}}
+                    </td>
+                {{/each}}
             </tr>
         {{/each}}
     </tbody>

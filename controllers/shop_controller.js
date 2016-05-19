@@ -1,4 +1,5 @@
 var express = require('express');
+var _ = require('underscore');
 var router = express.Router();
 var shop = require('../model/shop.js');
 
@@ -8,7 +9,13 @@ router.get('/', function(req,res) {
 
 router.get('/shop', function(req,res) {
 	shop.all(function(data){
-		var hbsObject = {inventory : data}
+		var n = 4;
+		var lists = _.groupBy(data, function(element, index){
+		  return Math.floor(index/n);
+		});
+		lists = _.toArray(lists); //Added this to convert the returned object to an array.
+		console.log(lists);
+		var hbsObject = {inventory : lists}
 		console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
@@ -27,6 +34,12 @@ router.get('/inventory', function(req,res) {
 		var hbsObject = {inventory : data}
 		console.log(hbsObject)
 		res.render('inventory', hbsObject);
+	});
+});
+
+router.post('/inventory/create', function(req,res) {
+	shop.create(['productName', 'productDescription', 'sku', 'category', 'productImage', 'quantity', 'price', 'supplier', 'barcode'], [req.body.productName, req.body.productDescription, req.body.sku, req.body.category, req.body.productImage, req.body.quantity, req.body.price, req.body.supplier, req.body.barcode], function(data){
+		res.redirect('/inventory')
 	});
 });
 
