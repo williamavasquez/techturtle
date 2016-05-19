@@ -1,5 +1,11 @@
 INSERT INTO  user (emailAddress,userName,password,name,role) VALUES ('test@test.com','k27goat','q1w2e3r4','Jason','admin');
 
+INSERT INTO  user (emailAddress,userName,password,name,role) VALUES ('test2@test2.com','k27goat2','q1w2e3r42','Jason2','admin');
+
+INSERT INTO  ordersGen (userId) VALUES ('1');
+
+INSERT INTO  orders (barcode, quantityPurchased, userId) VALUES ('111134223333', '2', '1');
+
 INSERT INTO  inventory (barcode, sku, productDescription, productName, productImage, category, quantity,price, supplier) VALUES ('111134223333','FN345234','Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards','Dell XPS 4001','/assets/images/cpu_1.png','computers','33','3323.99','Dell');
 
 INSERT INTO  inventory (barcode, sku, productDescription, productName, productImage, category, quantity,price, supplier) VALUES ('13423234223333','FN234234','Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards','Dell XPS 5001','/assets/images/cpu_2.png','computers','23','3323.99','Dell');

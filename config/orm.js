@@ -31,6 +31,7 @@ var orm = {
             cb(result);
         });
     },
+
     //vals is an array of values that we want to save to cols
     //cols are the columns we want to insert the values into
     create: function(table, cols, vals, cb) {
