@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/assets/javascript/script.js"></script>
+	<script type="text/javascript" src="/assets/javascript/quagga.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -35,9 +36,38 @@
 
 	{{{ body }}}
 
+<div id="yourElement">
+	<h1>test</h1>
+</div>
 	<footer class="footer">
 		<p>&copy; 2016 Tech Turtle, Inc.</p>
 	</footer>
+	<script type="text/javascript">
+	Quagga.init({
+    inputStream : {
+      name : "Live",
+      type : "LiveStream",
+      target: document.querySelector('#yourElement')    // Or '#yourElement' (optional)
+    },
+    decoder : {
+      readers : ["upc_reader"]
+    }
+  }, function(err) {
+      if (err) {
+          console.log(err);
+          return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+			Quagga.onDetected(function(data){
+			console.log(data);
+			console.log("test");
+			Quagga.stop();
+			return data
+		});
+  });
+// data.codeResult.code
+	</script>
 </div>
 </body>
 </html>
