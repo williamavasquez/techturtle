@@ -34,10 +34,6 @@ router.get('/inventory', function(req,res) {
 	});
 });
 
-router.get('/cart', function(req,res) {
-		res.render('cart');
-});
-
 router.get('/products', function(req,res) {
 		res.render('products');
 });
@@ -52,6 +48,10 @@ router.get('/orders', function(req,res) {
 		console.log(hbsObject)
 		res.render('orders', hbsObject);
 	});
+});
+
+router.post('/cart', function(req,res) {
+		res.render('cart');
 });
 
 router.post('/cart/createCart', function(req,res) {
