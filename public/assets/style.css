@@ -23,12 +23,39 @@ thead{
 label{
 	font-weight: normal;
 }
+video { 
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+	transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+
+#polina { 
+	font-weight:100; 
+	background: rgba(0,0,0,0.3);
+	color: white;
+	padding: 2rem;
+	width: 33%;
+	margin:2rem;
+	float: right;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-right: 15px;
-  padding-left: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
 /* Custom page header */
