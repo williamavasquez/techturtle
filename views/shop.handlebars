@@ -43,16 +43,16 @@
                                   
                                 </div>
                             </div>
+                            <!-- <form action="cart/createCart" method="POST" class="form col-md-12 center-block">-->
 
-
-
-
-
-                            <form action="inventory/create" method="POST" class="form col-md-12 center-block">
+                            <form action="cart" method="GET" class="form col-md-12 center-block">
                                 <div class="form-group">
+                                <input type="hidden" name="barcode" value="{{this.barcode}}">
+                                <input type="hidden" name="userId" value="1">
+                                <input type="hidden" name="orderNumber" value="0000001">
                                     <div class="row">
                                         <div class="col-md-4">
-                                              <select class="form-control" id="sel1">
+                                              <select class="form-control" name="quantityPurchased" id="sel1">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
