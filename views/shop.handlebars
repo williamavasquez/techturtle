@@ -1,19 +1,4 @@
-<div id="site">
-    <div id="content">
-        <div id="products">
-            <div class="product-description" data-name="Dell XPS 34343" data-price="3323.99">
-                <img src="/assets/images/cpu_5.png" alt="{{this.productName}} {{this.price}}"><br>
-                Dell XPS 34343{{this.productName}}<br>
-                $3323.99{{this.price}} by Dell{{this.supplier}}<br>
-                <form class="add-to-cart" action="/cart" method="post">
-                        <label for="qty-1">Quantity</label>
-                        <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                        <input type="submit" value="Add to cart" class="btn" />
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <table id="shop" class="display" cellspacing="0" width="100%">
@@ -66,15 +51,13 @@
                             <div id="site">
                                 <div id="content">
                                     <div id="products">
-                                        <div class="product-description" data-name="Dell XPS 34343" data-price="3323.99">
+                                        <div class="product-description" data-name="{{this.productName}}" data-price="{{this.price}}">
                                             <img src="/assets/images/cpu_5.png" alt="{{this.productName}} {{this.price}}"><br>
                                             {{this.productName}}<br>
                                             {{this.price}} by {{this.supplier}}<br>
                                             <form class="add-to-cart" action="/cart" method="post">
                                                     <label for="qty-1">Quantity</label>
                                                     <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                                                    <input type="hidden" name="data-name" data-name="Dell XPS 34343" value="Dell XPS 34343">
-                                                    <input type="hidden" name="data-price" data-name="3323.99" value="3323.99">
                                                     <input type="submit" value="Add to cart" class="btn" />
                                             </form>
                                         </div>
