@@ -47,51 +47,28 @@
                                 </div>
                             </div>
 
-
                             <div id="site">
                                 <div id="content">
                                     <div id="products">
                                         <div class="product-description" data-name="{{this.productName}}" data-price="{{this.price}}">
-                                            <img src="/assets/images/cpu_5.png" alt="{{this.productName}} {{this.price}}"><br>
-                                            {{this.productName}}<br>
-                                            {{this.price}} by {{this.supplier}}<br>
-                                            <form class="add-to-cart" action="/cart" method="post">
-                                                    <label for="qty-1">Quantity</label>
-                                                    <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                                                    <input type="submit" value="Add to cart" class="btn" />
+                                            <form class="add-to-cart" action="/cart" method="post">              
+                                                <input type="hidden" name="barcode" value="{{this.barcode}}">
+                                                <input type="hidden" name="userId" value="1">
+                                                <input type="hidden" name="orderNumber" value="0000001">
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                          <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <button type="submit" value="Add to cart" class="btn btn-success btn-md btn-block">Add To Cart</button>
+                                                    </div>
+                                                </div> 
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-
-                            <form action="cart" method="GET" class="form col-md-12 center-block">
-                                <div class="form-group">
-                                <input type="hidden" name="barcode" value="{{this.barcode}}">
-                                <input type="hidden" name="userId" value="1">
-                                <input type="hidden" name="orderNumber" value="0000001">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                              <select class="form-control" name="quantityPurchased" id="sel1">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                              </select>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <button class="btn btn-success btn-md btn-block">Add To Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                           </div>
                           <div class="modal-footer">
                           </div>
