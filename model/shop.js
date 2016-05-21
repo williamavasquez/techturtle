@@ -20,6 +20,12 @@ var shop = {
 		});
 	},
 
+	createCart: function(cols, vals, cb) {
+		orm.createCart('orders', cols, vals, function(res){
+			cb(res);
+		});
+	},
+
 	update: function(objColVals, condition, cb) {
 		orm.update('inventory', objColVals, condition, function(res){
 			cb(res);
