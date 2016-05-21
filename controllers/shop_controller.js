@@ -51,15 +51,17 @@ router.get('/orders', function(req,res) {
 });
 
 router.post('/cart', function(req,res) {
+	// res.send(req.body);
+	console.log(req.body);
 		res.render('cart');
 });
 
-router.post('/cart/createCart', function(req,res) {
-	console.log(req.body.barcode, req.body.quantityPurchased)
-	shop.createCart(['barcode', 'quantityPurchased'], [req.body.barcode, req.body.quantityPurchased], function(data){
-		res.redirect('/cart')
-	});
-});
+// router.post('/cart/createCart', function(req,res) {
+// 	console.log(req.body.barcode, req.body.quantityPurchased)
+// 	shop.createCart(['barcode', 'quantityPurchased'], [req.body.barcode, req.body.quantityPurchased], function(data){
+// 		res.redirect('/cart')
+// 	});
+// });
 
 router.post('/inventory/create', function(req,res) {
 	shop.create(['productName', 'productDescription', 'sku', 'category', 'productImage', 'quantity', 'price', 'supplier', 'barcode'], [req.body.productName, req.body.productDescription, req.body.sku, req.body.category, req.body.productImage, req.body.quantity, req.body.price, req.body.supplier, req.body.barcode], function(data){
