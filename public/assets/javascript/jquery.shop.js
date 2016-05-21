@@ -238,6 +238,7 @@
 		displayCart: function() {
 			if( this.$formCart.length ) {
 				var cart = this._toJSONObject( this.storage.getItem( this.cartName ) );
+				debugger;
 				var items = cart.items;
 				var $tableCart = this.$formCart.find( ".shopping-cart" );
 				var $tableCartBody = $tableCart.find( "tbody" );
@@ -254,8 +255,8 @@
 						var qty = item.qty;
 						// var html = "<tr>sdf<img src='/assets/images/cpu_4.png'><td class='pname'>" + product + "</td>" + "<td class='pqty'><input type='number' value='" + qty + "' class='qty'/></td>";
 					 //    	html += "<td class='pprice'>" + price + "</td><td class='pdelete'><a href='' data-product='" + product + "'>&times;</a></td></tr>";
-					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='2' min='1'></div><div class='product-removal'><button class='remove-product'>Remove</button></div><div class='product-line-price'>25.98</div></div>";
-
+					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button class='remove-product'>Remove</button></div><div class='product-line-price'>25.98</div></div>";
+console.log(html);
 
 					    // <tr><td class='product-image'><img src='/assets/images/cpu_4.png'></td><td class='product-title'>Dell XPS 9001<br><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></td><td class='product-price'>12.99</td><td class='product-quantity'><input type='number' value='2' min='1'></td><td class='product-removal'><button class='remove-product'>Remove</button></td><td class='product-line-price'>25.98</td></tr>";
 
