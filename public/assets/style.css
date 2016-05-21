@@ -114,7 +114,6 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
 
 .shopping-cart {
-  margin-top: -45px;
 }
 
 /* Column headers */
@@ -167,6 +166,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   clear: both;
   width: 100%;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .totals .totals-item label {
   float: left;
