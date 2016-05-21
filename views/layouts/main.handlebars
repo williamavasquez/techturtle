@@ -60,10 +60,11 @@
       console.log("Initialization finished. Ready to start");
       Quagga.start();
 			Quagga.onDetected(function(data){
-			console.log(data);
-			console.log("test");
-			Quagga.stop();
-			return data
+				console.log(data);
+				console.log("test");
+				console.log(data.codeResult.code);
+				Quagga.stop();
+				return data
 		});
   });
 // data.codeResult.code
