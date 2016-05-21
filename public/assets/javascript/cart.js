@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  recalculateCart();
+});
+
 /* Set rates + misc */
 var taxRate = 0.05;
 var shippingRate = 15.00; 
@@ -5,12 +9,13 @@ var fadeTime = 300;
 
 
 /* Assign actions */
-$('.product-quantity input').change( function() {
+$(document).on('change', '.product-quantity input', function() {
   updateQuantity(this);
 });
 
-$('.product-removal button').click( function() {
+$(document).on('click', '.product-removal button', function(e) {
   removeItem(this);
+  e.preventDefault();
 });
 
 
@@ -50,6 +55,7 @@ function updateQuantity(quantityInput)
 {
   /* Calculate line price */
   var productRow = $(quantityInput).parent().parent();
+  debugger;
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
   var linePrice = price * quantity;
@@ -69,11 +75,11 @@ function updateQuantity(quantityInput)
 function removeItem(removeButton)
 {
   /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
+  var productRow = $(removeButton).parent().parent()[0];
+  $(productRow).slideUp(fadeTime, function() {
     productRow.remove();
     recalculateCart();
   });
+  console.log(productRow);
+  debugger;
 }
-
-recalculateCart();
