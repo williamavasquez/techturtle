@@ -29,8 +29,8 @@
 			this.$paypalForm = this.$element.find( "#paypal-form" ); // PayPal form
 			
 			
-			this.currency = "&#36;"; // HTML entity of the currency to be displayed in the layout
-			this.currencyString = "$"; // Currency symbol as textual string
+			this.currency = "&euro;"; // HTML entity of the currency to be displayed in the layout
+			this.currencyString = "€"; // Currency symbol as textual string
 			this.paypalCurrency = "EUR"; // PayPal's currency code
 			this.paypalBusinessEmail = "yourbusiness@email.com"; // Your Business PayPal's account email address
 			this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
@@ -250,17 +250,11 @@
 					for( var i = 0; i < items.length; ++i ) {
 						var item = items[i];
 						var product = item.product;
-						var price = item.price;
+						var price = this.currency + " " + item.price;
 						var qty = item.qty;
-						// var html = "<tr>sdf<img src='/assets/images/cpu_4.png'><td class='pname'>" + product + "</td>" + "<td class='pqty'><input type='number' value='" + qty + "' class='qty'/></td>";
-					 //    	html += "<td class='pprice'>" + price + "</td><td class='pdelete'><a href='' data-product='" + product + "'>&times;</a></td></tr>";
-					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='2' min='1'></div><div class='product-removal'><button class='remove-product'>Remove</button></div><div class='product-line-price'>25.98</div></div>";
-
-
-					    // <tr><td class='product-image'><img src='/assets/images/cpu_4.png'></td><td class='product-title'>Dell XPS 9001<br><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></td><td class='product-price'>12.99</td><td class='product-quantity'><input type='number' value='2' min='1'></td><td class='product-removal'><button class='remove-product'>Remove</button></td><td class='product-line-price'>25.98</td></tr>";
-
-          				// <div class='product-details'><div class='product-title pname'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>12.99</div><div class='product-quantity'><input type='number' value='2' min='1'></div><div class='product-removal'><button class='remove-product'>Remove</button></div><div class='product-line-price'>25.98</div></div>";
-
+						var html = "<tr><td class='pname'>" + product + "</td>" + "<td class='pqty'><input type='text' value='" + qty + "' class='qty'/></td>";
+					    	html += "<td class='pprice'>" + price + "</td><td class='pdelete'><a href='' data-product='" + product + "'>&times;</a></td></tr>";
+					
 						$tableCartBody.html( $tableCartBody.html() + html );
 					}
 
