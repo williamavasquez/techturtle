@@ -1,9 +1,6 @@
-
+$(document).ready(function() {
     $('#inventory').DataTable();
     $('#shop').DataTable();
-
-$(document).ready(function() {
-
 	$("#register").hide();
 	
 	$("#register_btn").click(function(){
