@@ -254,14 +254,7 @@
 						var price = item.price;
 						var qty = item.qty;
 						var totalValue = price*qty;
-						// var html = "<tr>sdf<img src='/assets/images/cpu_4.png'><td class='pname'>" + product + "</td>" + "<td class='pqty'><input type='number' value='" + qty + "' class='qty'/></td>";
-					 //    	html += "<td class='pprice'>" + price + "</td><td class='pdelete'><a href='' data-product='" + product + "'>&times;</a></td></tr>";
 					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price'>" + totalValue + "</div></div>";
-console.log(html);
-
-					    // <tr><td class='product-image'><img src='/assets/images/cpu_4.png'></td><td class='product-title'>Dell XPS 9001<br><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></td><td class='product-price'>12.99</td><td class='product-quantity'><input type='number' value='2' min='1'></td><td class='product-removal'><button class='remove-product'>Remove</button></td><td class='product-line-price'>25.98</td></tr>";
-
-          				// <div class='product-details'><div class='product-title pname'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-price'>12.99</div><div class='product-quantity'><input type='number' value='2' min='1'></div><div class='product-removal'><button class='remove-product'>Remove</button></div><div class='product-line-price'>25.98</div></div>";
 
 						$tableCartBody.html( $tableCartBody.html() + html );
 					}
@@ -374,13 +367,14 @@ console.log(html);
 		handleAddToCartForm: function() {
 			var self = this;
 			self.$formAddToCart.each(function() {
+				console.log(this,1);
+				$(document).on( "submit", 'form', function() {
 				var $form = $( this );
 				var $product = $form.parent();
 				var price = self._convertString( $product.data( "price" ) );
 				var name =  $product.data( "name" );
-				
-				$form.on( "submit", function() {
-					var qty = self._convertString( $form.find( ".qty" ).val() );
+					console.log(this,2);
+					var qty = self._convertString( $product.find( ".qty" ).val() );
 					var subTotal = qty * price;
 					var total = self._convertString( self.storage.getItem( self.total ) );
 					var sTotal = total + subTotal;
@@ -394,6 +388,7 @@ console.log(html);
 					var shippingRates = self._calculateShipping( qty );
 					var totalShipping = shipping + shippingRates;
 					
+					debugger;
 					self.storage.setItem( self.shippingRates, totalShipping );
 				});
 			});
