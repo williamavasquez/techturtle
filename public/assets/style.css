@@ -362,3 +362,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     border-bottom: 0;
   }
 }
+
+/*Barcode Window on Modal Popup - Inventory section*/
+ #barcodeScannerWindow{
+   display: none;
+   margin: 0 0 10px 70px;
+ }
