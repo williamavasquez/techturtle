@@ -26,9 +26,10 @@ function quagga(){
         var queryURL = 'https://api.outpan.com/v2/products/'+data+'?apikey=8167c01974ff51124b37a55674d6bdb1'
         $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
           barcodeInfo = response;
-          barcode = barcodeInfo.gtin;
-          productName = barcodeInfo.name;
-          manufacturer = barcodeInfo.attributes.Manufacturer;
+          $('input[name=barcode]').val(barcodeInfo.gtin);
+          $('input[name=productName]').val(barcodeInfo.name);
+          $('input[name=productImage]').val(barcodeInfo.images);
+          $('input[name=supplier]').val(barcodeInfo.attributes.Manufacturer);
           });
         Quagga.stop();
         return data
