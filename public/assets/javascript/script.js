@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('#inventory').DataTable();
     $('#shop').DataTable();
-
 	$("#register").hide();
 	
 	$("#register_btn").click(function(){

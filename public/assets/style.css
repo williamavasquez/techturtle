@@ -114,7 +114,6 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
 
 .shopping-cart {
-  margin-top: -45px;
 }
 
 /* Column headers */
@@ -173,11 +172,13 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   clear: both;
   width: 79%;
   text-align: right;
+  margin-top: 10px;
 }
 .totals .totals-item .totals-value {
   float: right;
   width: 21%;
   text-align: right;
+  margin-top: 10px;
 }
 .totals .totals-item-total {
 }
