@@ -111,3 +111,9 @@ label{
     border-bottom: 0;
   }
 }
+
+/*Barcode Window on Modal Popup - Inventory section*/
+ #barcodeScannerWindow{
+   display: none;
+   margin: 0 0 10px 70px;
+ }
