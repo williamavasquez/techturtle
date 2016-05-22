@@ -23,7 +23,7 @@ thead{
 label{
 	font-weight: normal;
 }
-video { 
+video {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -36,12 +36,12 @@ video {
 	background-size: cover;
 	transition: 1s opacity;
 }
-.stopfade { 
+.stopfade {
    opacity: .5;
 }
 
-#polina { 
-	font-weight:100; 
+#polina {
+	font-weight:100;
 	background: rgba(0,0,0,0.3);
 	color: white;
 	padding: 2rem;
@@ -366,5 +366,10 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 /*Barcode Window on Modal Popup - Inventory section*/
  #barcodeScannerWindow{
    display: none;
-   margin: 0 0 10px 70px;
+   margin: 0 50px 10px 50px;
  }
+
+#barcodeScannerWindow video {
+    position: inherit;
+  	transform: none;
+}
