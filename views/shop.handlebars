@@ -1,121 +1,83 @@
-<div id="site">
-    <div id="content">
-        <div id="products">
-            <div class="product-description" data-name="Dell XPS 34343" data-price="3323.99">
-                <img src="/assets/images/cpu_5.png" alt="{{this.productName}} {{this.price}}"><br>
-                Dell XPS 34343{{this.productName}}<br>
-                $3323.99{{this.price}} by Dell{{this.supplier}}<br>
-                <form class="add-to-cart" action="/cart" method="post">
-                        <label for="qty-1">Quantity</label>
-                        <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                        <input type="submit" value="Add to cart" class="btn" />
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<table id="shop" class="display" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each inventory}}
+<div class="row">
+  <div class="col-md-12 shopping">
+    <table id="shop" class="display" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                {{#each this}}
-                    <td data-search="{{this.productName}}" align="center">
-                        <a href="#" data-toggle="modal" data-target="#shop-{{this.barcode}}"><img src="{{this.productImage}}" alt="{{this.productName}} {{this.price}}"></a><br>
-                        {{this.productName}}<br>
-                        {{this.price}} by {{this.supplier}}
-                    </td>
-                    <!-- Modal Add New -->
-                    <div id="shop-{{this.barcode}}" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><img src="/assets/images/logo_small.jpg" alt="Tech Turtle"></h4>
-                          </div>
-                          <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{this.productImage}}" alt="{{this.productName}}">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each inventory}}
+                <tr>
+                    {{#each this}}
+                        <td data-search="{{this.productName}}" align="center">
+                            <a href="#" data-toggle="modal" data-target="#shop-{{this.barcode}}"><img src="{{this.productImage}}" width="150" alt="{{this.productName}} {{this.price}}"></a><br>
+                            {{this.productName}}<br>
+                            {{this.price}} by {{this.supplier}}
+                        </td>
+                        <!-- Modal Add New -->
+                        <div id="shop-{{this.barcode}}" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"><img src="/assets/images/logo_small.jpg" alt="Tech Turtle"></h4>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="{{this.productImage}}" alt="{{this.productName}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h1>{{this.productName}}</h1>
+                                        SKU: {{this.sku}} by {{this.supplier}} 
+                                        <hr>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <h1>{{this.productName}}</h1>
-                                    SKU: {{this.sku}} by {{this.supplier}} 
-                                    <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3>Price: ${{this.price}}</h3>
+                                        {{this.productDescription}}<br><br>
+                                      
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3>Price: ${{this.price}}</h3>
-                                    {{this.productDescription}}<br><br>
-                                  
-                                </div>
-                            </div>
 
+                                <div id="site">
+                                    <div id="content">
+                                        <div id="products">
+                                            <div class="product-description" data-name="{{this.productName}}" data-price="{{this.price}}">
+                                                <form class="add-to-cart" action="/cart" method="post">              
+                                                    <input type="hidden" name="barcode" value="{{this.barcode}}">
+                                                    <input type="hidden" name="userId" value="1">
+                                                    <input type="hidden" name="orderNumber" value="0000001">
 
-                            <div id="site">
-                                <div id="content">
-                                    <div id="products">
-                                        <div class="product-description" data-name="Dell XPS 34343" data-price="3323.99">
-                                            <img src="/assets/images/cpu_5.png" alt="{{this.productName}} {{this.price}}"><br>
-                                            {{this.productName}}<br>
-                                            {{this.price}} by {{this.supplier}}<br>
-                                            <form class="add-to-cart" action="/cart" method="post">
-                                                    <label for="qty-1">Quantity</label>
-                                                    <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                                                    <input type="submit" value="Add to cart" class="btn" />
-                                            </form>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                              <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <button type="submit" value="Add to cart" class="btn btn-success btn-md btn-block">Add To Cart</button>
+                                                        </div>
+                                                    </div> 
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                              </div>
                             </div>
-                            
-
-                            <form action="cart" method="GET" class="form col-md-12 center-block">
-                                <div class="form-group">
-                                <input type="hidden" name="barcode" value="{{this.barcode}}">
-                                <input type="hidden" name="userId" value="1">
-                                <input type="hidden" name="orderNumber" value="0000001">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                              <select class="form-control" name="quantityPurchased" id="sel1">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                              </select>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <button class="btn btn-success btn-md btn-block">Add To Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
                           </div>
                         </div>
-                      </div>
-                    </div>
-                {{/each}}
-            </tr>
-        {{/each}}
-        
-    </tbody>
-</table>
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+</div>
