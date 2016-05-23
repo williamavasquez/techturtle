@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <button data-toggle="modal" data-target="#scanNew" class="btn btn-success btn-lg">Scan Your Item</button> 
-    <button data-toggle="modal" data-target="#addNew" class="btn btn-success btn-lg">Enter Your Item</button>
+    <button data-toggle="modal" data-target="#scanNew" class="btn btn-success btn-sm">Scan Your Item</button> 
+    <button data-toggle="modal" data-target="#addNew" class="btn btn-success btn-sm">Enter Your Item</button>
   </div>
   <div class="col-md-12">&nbsp;</div>
 </div>
@@ -50,25 +50,25 @@
                   <div class="modal-body">
                     <form action="inventory/update/{{this.barcode}}?_method=PUT" method="POST" class="form col-md-12 center-block">
                         <div class="form-group">
-                          Name <input type="text" class="form-control input-lg" name="productName" value="{{this.productName}}">
+                          Name <input type="text" class="form-control input-md" name="productName" value="{{this.productName}}">
                         </div>
                         <div class="form-group">
-                          Description <input type="text" class="form-control input-lg" name="productDescription" value="{{this.productDescription}}">
+                          Description <input type="text" class="form-control input-md" name="productDescription" value="{{this.productDescription}}">
                         </div>
                         <div class="form-group">
-                          SKU <input type="text" class="form-control input-lg" name="sku" value="{{this.sku}}">
+                          SKU <input type="text" class="form-control input-md" name="sku" value="{{this.sku}}">
                         </div>
                         <div class="form-group">
-                          Category <input type="text" class="form-control input-lg" name="category" value="{{this.category}}">
+                          Category <input type="text" class="form-control input-md" name="category" value="{{this.category}}">
                         </div>
                         <div class="form-group">
-                          Quantity <input type="text" class="form-control input-lg" name="quantity" value="{{this.quantity}}">
+                          Quantity <input type="text" class="form-control input-md" name="quantity" value="{{this.quantity}}">
                         </div>
                         <div class="form-group">
-                          Price <input type="text" class="form-control input-lg" name="price" value="{{this.price}}">
+                          Price <input type="text" class="form-control input-md" name="price" value="{{this.price}}">
                         </div>
                         <div class="form-group">
-                          Supplier <input type="text" class="form-control input-lg" name="supplier" value="{{this.supplier}}">
+                          Supplier <input type="text" class="form-control input-md" name="supplier" value="{{this.supplier}}">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-primary btn-lg btn-block">Update</button>
@@ -117,31 +117,31 @@
       <div class="modal-body">
         <form action="inventory/create" method="POST" class="form center-block">
             <div class="form-group">
-              Name <input type="text" class="form-control input-lg" name="productName" required>
+              Name <input type="text" class="form-control input-md" name="productName" required>
             </div>
             <div class="form-group">
-              Description <input type="text" class="form-control input-lg" name="productDescription" required>
+              Description <input type="text" class="form-control input-md" name="productDescription" required>
             </div>
             <div class="form-group">
-              SKU <input type="text" class="form-control input-lg" name="sku" required>
+              SKU <input type="text" class="form-control input-md" name="sku" required>
             </div>
             <div class="form-group">
-              Barcode <input type="text" class="form-control input-lg" name="barcode" required>
+              Barcode <input type="text" class="form-control input-md" name="barcode" required>
             </div>
             <div class="form-group">
-              Image Url <input type="text" class="form-control input-lg" name="productImage" required>
+              Image Url <input type="text" class="form-control input-md" name="productImage" required>
             </div>
             <div class="form-group">
-              Category <input type="text" class="form-control input-lg" name="category" required>
+              Category <input type="text" class="form-control input-md" name="category" required>
             </div>
             <div class="form-group">
-              Quantity <input type="text" class="form-control input-lg" name="quantity" required>
+              Quantity <input type="text" class="form-control input-md" name="quantity" required>
             </div>
             <div class="form-group">
-              Price <input type="text" class="form-control input-lg" name="price" required>
+              Price <input type="text" class="form-control input-md" name="price" required>
             </div>
             <div class="form-group">
-              Supplier <input type="text" class="form-control input-lg" name="supplier" required>
+              Supplier <input type="text" class="form-control input-md" name="supplier" required>
             </div>
             <div class="form-group">
               <button class="btn btn-primary btn-lg">Submit</button>
@@ -167,38 +167,38 @@
       <div class="modal-body">
         <form action="inventory/create" method="POST" class="form center-block">
             <div class="form-group">
-              Name <input type="text" class="form-control input-lg" name="productName" required>
+              Name <input type="text" class="form-control input-md" name="productName" required>
             </div>
             <div class="form-group">
-              Description <input type="text" class="form-control input-lg" name="productDescription" required>
+              Description <input type="text" class="form-control input-md" name="productDescription" required>
             </div>
             <div class="form-group">
-              SKU <input type="text" class="form-control input-lg" name="sku" required>
+              SKU <input type="text" class="form-control input-md" name="sku" required>
             </div>
             <div class="form-group">
-              Barcode <input type="text" class="form-control input-lg" name="barcode" required>
+              Barcode <input type="text" class="form-control input-md" name="barcode" required>
             </div>
             <div class="form-group">
-              Image Url <input type="text" class="form-control input-lg" name="productImage" required>
+              Image Url <input type="text" class="form-control input-md" name="productImage" required>
             </div>
             <div class="form-group">
-              Category <input type="text" class="form-control input-lg" name="category" required>
+              Category <input type="text" class="form-control input-md" name="category" required>
             </div>
             <div class="form-group">
-              Quantity <input type="text" class="form-control input-lg" name="quantity" required>
+              Quantity <input type="text" class="form-control input-md" name="quantity" required>
             </div>
             <div class="form-group">
-              Price <input type="text" class="form-control input-lg" name="price" required>
+              Price <input type="text" class="form-control input-md" name="price" required>
             </div>
             <div class="form-group">
-              Supplier <input type="text" class="form-control input-lg" name="supplier" required>
+              Supplier <input type="text" class="form-control input-md" name="supplier" required>
             </div>
             <div id="barcodeScannerWindow">
               <p>Please Scan Barcode</p>
             </div>
             <div class="form-group">
-              <button id= "scan" type="button" class="btn btn-lg  btn-warning">Scan Barcode</button>
-              <button class="btn btn-primary btn-lg">Add New</button>
+              <button id= "scan" type="button" class="btn btn-md  btn-warning">Scan Barcode</button>
+              <button class="btn btn-primary btn-md">Add New</button>
             </div>
         </form>
       </div>
