@@ -2,6 +2,32 @@
 body {
   padding-bottom: 20px;
   font-family: verdana;
+  background:url(/assets/images/bg.jpg);
+}
+.shop{
+  margin-top: 20px;
+}
+/* Custom page header */
+.nav{
+  margin-top: -5px;
+  color: #FFFFFF !important;
+}
+.nav-pills > .active > a{
+  color: #FFFFFF !important;
+}
+.nav-pills > .active > a:hover,.nav-pills > li > a:hover {
+  text-decoration: none;
+  border-radius:0px;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #FFFFFF;
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+}
+.header {
+  color: #ffffff;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
 }
 th{
 	color: #0F75BC;
@@ -39,7 +65,28 @@ video {
 .stopfade {
    opacity: .5;
 }
-
+.modal-header{
+  background-color: #3A3D44;
+}
+.modal-title{
+  color: #ffffff;
+}
+.homePage{
+  background-color: #ffffff;
+  margin-top: 50px;
+  padding-top: 10px;
+}
+.shopping{
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.inventory{
+  margin-top: -25px;
+}
+.cart{
+  padding: 5px;
+  background-color: #ffffff;
+}
 #polina {
 	font-weight:100;
 	background: rgba(0,0,0,0.3);
@@ -282,25 +329,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 	padding-left: 15px;
 }
 
-/* Custom page header */
-.nav{
-	padding-top: 15px;
-}
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,.nav-pills > li > a:hover {
-	text-decoration: none;
-	border-radius:0px;
-	border-bottom-width: 4px;
-	border-bottom-style: solid;
-	border-bottom-color: #0F75BC;
-	color: #0F75BC !important;
-	background-color: transparent !important;
-}
-.header {
-	color: #ffffff;
-	padding-bottom: 5px;
-	border-bottom: 1px solid #e5e5e5;
-}
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
 	margin-top: 0;
@@ -329,6 +358,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 /* Main marketing message and sign up button */
 .jumbotron {
 	text-align: center;
+  background-color: #FFFFFF;
 	border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {

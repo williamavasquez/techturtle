@@ -1,46 +1,50 @@
-<h1>Shopping Cart</h1>
 <div class="row">
-  <div class="col-md-12">
-    <div class="column-labels">
-      <label class="product-image">Image</label>
-      <label class="product-details">Product</label>
-      <label class="product-price">Price</label>
-      <label class="product-quantity">Quantity</label>
-      <label class="product-removal">Remove</label>
-      <label class="product-line-price">Total</label>
-    </div>
-    <div id="site">
-      <div id="content">
-        <form id="shopping-cart" action="/cart" method="post"><br>
-          <table class="shopping-cart" width="100%">
-            <thead>
-            </thead>
-            <tbody>
+  <div class="col-md-12 shopping">
+    <h1>Shopping Cart</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="column-labels">
+          <label class="product-image">Image</label>
+          <label class="product-details">Product</label>
+          <label class="product-price">Price</label>
+          <label class="product-quantity">Quantity</label>
+          <label class="product-removal">Remove</label>
+          <label class="product-line-price">Total</label>
+        </div>
+        <div id="site">
+          <div id="content" class="cart">
+            <form id="shopping-cart" action="/cart" method="post"><br>
+              <table class="shopping-cart" width="100%">
+                <thead>
+                </thead>
+                <tbody>
 
-            </tbody>
-          </table>
-        </form>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+        <div class="totals cart">
+          <div class="totals-item">
+            <label>Subtotal</label>
+            <div class="totals-value" id="cart-subtotal"></div>
+          </div>
+          <div class="totals-item">
+            <label>Tax (5%)</label>
+            <div class="totals-value" id="cart-tax"></div>
+          </div>
+          <div class="totals-item">
+            <label>Shipping</label>
+            <div class="totals-value" id="cart-shipping"></div>
+          </div>
+          <div class="totals-item totals-item-total">
+            <label>Grand Total</label>
+            <div class="totals-value" id="cart-total"></div>
+          </div>
+        </div>
+        <button class="checkout btn btn-success btn-lg ">Checkout</button>
       </div>
     </div>
-    <div class="totals">
-      <div class="totals-item">
-        <label>Subtotal</label>
-        <div class="totals-value" id="cart-subtotal"></div>
-      </div>
-      <div class="totals-item">
-        <label>Tax (5%)</label>
-        <div class="totals-value" id="cart-tax"></div>
-      </div>
-      <div class="totals-item">
-        <label>Shipping</label>
-        <div class="totals-value" id="cart-shipping"></div>
-      </div>
-      <div class="totals-item totals-item-total">
-        <label>Grand Total</label>
-        <div class="totals-value" id="cart-total"></div>
-      </div>
-    </div>
-    <button class="checkout btn btn-success btn-lg ">Checkout</button>
   </div>
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
