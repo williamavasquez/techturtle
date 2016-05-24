@@ -4,7 +4,7 @@
 	<title>Tech Turtle</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
 	<script type="text/javascript" src="/assets/javascript/jquery.shop.js"></script>
@@ -30,11 +30,20 @@
 	<div class="header clearfix">
 		<nav>
 		  <ul class="nav nav-pills pull-right">
-		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each user}}{{this.name}}{{/each}}</a></li>
+		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
 		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
+		    <li role="presentation"><a href="/users" class="whtText">Users</a></li>
 		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
 		    <li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
-		    <li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+
+			{{#unless logged_in}}
+		    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+			{{/unless}}
+
+			{{#if logged_in}}
+				<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
+			{{/if}}
+
 		  </ul>
 		</nav>
 		<span class="text-muted"><a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a></span>
@@ -58,12 +67,12 @@
 	          <div class="row">
 				<div class="col-md-12" id="sign_in">
 				<h4>Sign In</h4>
-				<form class="form center-block">
+				<form class="form center-block" action="/users/login" method="POST">
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="Email">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="email">
 					</div>
 					<div class="form-group">
-					  <input type="password" class="form-control input-lg" placeholder="Password">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
 					</div>
 					<div class="form-group">
 					  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
@@ -77,18 +86,21 @@
 
 				<div class="col-md-12" id="register">
 				<h4>Register</h4>
-				<form class="form center-block">
+				<form class="form center-block" action="/users/create" method="POST">
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="First Name">
+					  <input type="text" class="form-control input-lg" placeholder="User Name" name="username">
 					</div>
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="Last Name">
+					  <input type="text" class="form-control input-lg" placeholder="First Name" name="firstname">
 					</div>
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="Email">
+						<input type="text" class="form-control input-lg" placeholder="Last Name" name="lastname">
 					</div>
 					<div class="form-group">
-					  <input type="password" class="form-control input-lg" placeholder="Password">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="email">
+					</div>
+					<div class="form-group">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
 					</div>
 					<div class="form-group">
 					  <button class="btn btn-primary btn-lg btn-block">Sign Up</button>

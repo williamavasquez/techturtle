@@ -1,6 +1,6 @@
-INSERT INTO  user (emailAddress,userName,password,name,role) VALUES ('test@test.com','k27goat','q1w2e3r4','Jason','admin');
+INSERT INTO  users (emailAddress,userName,password,name,role) VALUES ('test@test.com','k27goat','q1w2e3r4','Jason','admin');
 
-INSERT INTO  user (emailAddress,userName,password,name,role) VALUES ('test2@test2.com','k27goat2','q1w2e3r42','Jason2','admin');
+INSERT INTO  users (emailAddress,userName,password,name,role) VALUES ('test2@test2.com','k27goat2','q1w2e3r42','Jason2','admin');
 
 INSERT INTO  ordersGen (userId) VALUES ('1');
 
