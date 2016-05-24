@@ -16,8 +16,8 @@ var user = {
 		});
 	},
 	//cols and vals are arrays
-	create1: function(cols, vals, cb) {
-		orm.create1('users', cols, vals, function(res){
+	createUser: function(cols, vals, cb) {
+		orm.createUser('users', cols, vals, function(res){
 			cb(res);
 		});
 	},

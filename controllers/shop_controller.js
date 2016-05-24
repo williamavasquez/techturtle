@@ -15,7 +15,7 @@ router.get('/shop', function(req,res) {
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
 		//console.log(lists);
-		var hbsObject = {inventory : lists}
+		var hbsObject = {inventory : lists, logged_in: req.session.logged_in}
 		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});

@@ -34,7 +34,7 @@ var orm = {
           cb(result);
       });
   },
-  create1: function(table, cols, vals, cb) {
+  createUser: function(table, cols, vals, cb) {
     var queryString = 'INSERT INTO ' + table;
 
     queryString = queryString + ' (';

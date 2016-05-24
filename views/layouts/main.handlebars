@@ -34,7 +34,17 @@
 		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
 		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
 		    <li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
+
+				{{#unless logged_in}}
+
 		    <li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+
+				{{/unless}}
+
+				{{#if logged_in}}
+					<a href="/users/sign-out">Sign Out</a>
+				{{/if}}
+
 		  </ul>
 		</nav>
 		<span class="text-muted"><a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a></span>

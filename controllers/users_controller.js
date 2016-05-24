@@ -79,7 +79,7 @@ router.post('/create', function(req,res) {
 				bcrypt.genSalt(10, function(err, salt) {
 
 						bcrypt.hash(req.body.password, salt, function(err, hash) {
-              user.create1(['userName', 'emailAddress', 'password'], [req.body.username, req.body.email, hash], function(user){
+              user.createUser(['userName', 'emailAddress', 'password'], [req.body.username, req.body.email, hash], function(user){
 
                 req.session.username = req.body.username;//we need to grab the username from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.user_email = req.body.email; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
@@ -87,6 +87,9 @@ router.post('/create', function(req,res) {
                 req.session.user_id = user.insertId; //the MySQL npm package returns the id of the record inserted with a key of insertId.
 
                 res.redirect('/shop')
+								console.log(req.session);
+								console.log(req.session.logged_in);
+								console.log(req.session.username);
             	});
 
 						});
