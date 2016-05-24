@@ -15,8 +15,8 @@ CREATE TABLE ordersGen
 (
     orderNumber int ZEROFILL NOT NULL AUTO_INCREMENT,
     date TIMESTAMP,
-	userId int,
-	FOREIGN KEY (userId) REFERENCES user(userId),
+    userId int,
+    FOREIGN KEY (userId) REFERENCES user(userId),
     PRIMARY KEY (orderNumber)
 );
 
@@ -37,10 +37,10 @@ CREATE TABLE inventory
 
 CREATE TABLE orders
 (
+    userId int,
     orderNumber int ZEROFILL NOT NULL AUTO_INCREMENT,
     barcode varchar(255) NOT NULL,
     quantityPurchased int NOT NULL,
-    userId int,
     FOREIGN KEY (userId) REFERENCES user(userId),
     FOREIGN KEY (orderNumber) REFERENCES ordersGen(orderNumber)
 );
