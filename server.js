@@ -1,8 +1,14 @@
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
 
 var app = express();
+
+//allow sessions
+app.use(session({ secret: 'app', cookie: { maxAge: 60000 }}));
+app.use(cookieParser());
 
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + '/public'));
@@ -18,8 +24,13 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-var routes = require('./controllers/shop_controller.js');
-app.use('/', routes);
+
+var shop_controller = require('./controllers/shop_controller.js');
+var users_controller = require('./controllers/users_controller.js');
+
+app.use('/', shop_controller);
+app.use('/shops', shop_controller);
+app.use('/users', users_controller);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){

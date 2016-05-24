@@ -58,12 +58,12 @@
 	          <div class="row">
 				<div class="col-md-12" id="sign_in">
 				<h4>Sign In</h4>
-				<form class="form center-block">
+				<form class="form center-block" action="/users/login" method="POST">
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="Email">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="email">
 					</div>
 					<div class="form-group">
-					  <input type="password" class="form-control input-lg" placeholder="Password">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
 					</div>
 					<div class="form-group">
 					  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
@@ -77,18 +77,18 @@
 
 				<div class="col-md-12" id="register">
 				<h4>Register</h4>
-				<form class="form center-block">
+				<form class="form center-block" action="/users/create" method="POST">
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="First Name">
+					  <input type="text" class="form-control input-lg" placeholder="User Name" name="username">
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 					  <input type="text" class="form-control input-lg" placeholder="Last Name">
+					</div> -->
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="email">
 					</div>
 					<div class="form-group">
-					  <input type="text" class="form-control input-lg" placeholder="Email">
-					</div>
-					<div class="form-group">
-					  <input type="password" class="form-control input-lg" placeholder="Password">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
 					</div>
 					<div class="form-group">
 					  <button class="btn btn-primary btn-lg btn-block">Sign Up</button>
