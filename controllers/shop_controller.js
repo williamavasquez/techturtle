@@ -4,7 +4,9 @@ var router = express.Router();
 var shop = require('../model/shop.js');
 
 router.get('/', function(req,res) {
+	shop.all(function(data){
 		res.render('index');
+	});
 });
 
 router.get('/shop', function(req,res) {
@@ -34,6 +36,13 @@ router.get('/inventory', function(req,res) {
 	});
 });
 
+router.get('/users', function(req,res) {
+	shop.allUsers(function(data){
+		var hbsObject = {users : data}
+		res.render('users', hbsObject);
+	});
+});
+
 router.get('/products', function(req,res) {
 		res.render('products');
 });
@@ -56,16 +65,15 @@ router.post('/cart', function(req,res) {
 		res.render('cart');
 });
 
-// router.post('/cart/createCart', function(req,res) {
-// 	console.log(req.body.barcode, req.body.quantityPurchased)
-// 	shop.createCart(['barcode', 'quantityPurchased'], [req.body.barcode, req.body.quantityPurchased], function(data){
-// 		res.redirect('/cart')
-// 	});
-// });
-
 router.post('/inventory/create', function(req,res) {
 	shop.create(['productName', 'productDescription', 'sku', 'category', 'productImage', 'quantity', 'price', 'supplier', 'barcode'], [req.body.productName, req.body.productDescription, req.body.sku, req.body.category, req.body.productImage, req.body.quantity, req.body.price, req.body.supplier, req.body.barcode], function(data){
 		res.redirect('/inventory')
+	});
+});
+
+router.post('/users/create', function(req,res) {
+	shop.createUser(['userName ', 'name ', 'emailAddress ', 'role '], [req.body.userName, req.body.name, req.body.emailAddress, req.body.role], function(data){
+		res.redirect('/users')
 	});
 });
 
@@ -77,11 +85,11 @@ router.delete('/inventory/delete/:barcode', function(req,res) {
 	});
 });
 
-router.put('/inventory/update/:barcode', function(req,res) {
-	var condition = 'barcode = ' + req.params.barcode;
+router.delete('/users/delete/:userId', function(req,res) {
+	var condition = 'userId = ' + req.params.userId;
 	console.log('condition', condition);
-	shop.update({'productName ' : req.body.productName, ', productDescription ' : req.body.productDescription, ', sku ' : req.body.sku, ', category ' : req.body.category, ', quantity ' : req.body.quantity, ', price ' : req.body.price, ', supplier ' : req.body.supplier}, condition, function(data){
-		res.redirect('/inventory');
+	shop.deleteUser(condition, function(data){
+		res.redirect('/users')
 	});
 });
 
@@ -90,6 +98,22 @@ router.delete('/orders/delete/:barcode', function(req,res) {
 	console.log('condition', condition);
 	shop.deleteOrders(condition, function(data){
 		res.redirect('/orders')
+	});
+});
+
+router.put('/inventory/update/:barcode', function(req,res) {
+	var condition = 'barcode = ' + req.params.barcode;
+	console.log('condition', condition);
+	shop.update({'productName ' : req.body.productName, ', productDescription ' : req.body.productDescription, ', sku ' : req.body.sku, ', category ' : req.body.category, ', quantity ' : req.body.quantity, ', price ' : req.body.price, ', supplier ' : req.body.supplier}, condition, function(data){
+		res.redirect('/inventory');
+	});
+});
+
+router.put('/users/update/:userId', function(req,res) {
+	var condition = 'userId = ' + req.params.userId;
+	console.log('condition', condition);
+	shop.updateUser({'userName ' : req.body.userName, ', name ' : req.body.name, ', emailAddress ' : req.body.emailAddress, ', role ' : req.body.role}, condition, function(data){
+		res.redirect('/users');
 	});
 });
 

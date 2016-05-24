@@ -30,20 +30,19 @@
 	<div class="header clearfix">
 		<nav>
 		  <ul class="nav nav-pills pull-right">
-		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each user}}{{this.name}}{{/each}}</a></li>
+		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
 		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
+		    <li role="presentation"><a href="/users" class="whtText">Users</a></li>
 		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
 		    <li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
 
-				{{#unless logged_in}}
+			{{#unless logged_in}}
+		    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+			{{/unless}}
 
-		    <li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
-
-				{{/unless}}
-
-				{{#if logged_in}}
-					<a href="/users/sign-out">Sign Out</a>
-				{{/if}}
+			{{#if logged_in}}
+				<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
+			{{/if}}
 
 		  </ul>
 		</nav>
