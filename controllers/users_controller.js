@@ -9,7 +9,7 @@ var connection = require('../config/connection.js');
 router.get('/profile/:id', function(req, res){
 
   var queryString = "select * from users "
-  queryString += "left join shops on shops.user_id = users.id "
+  queryString += "left join orders on orders.user_id = users.id "
   queryString += "where users.id = " + req.params.id;
   console.log(queryString)
   connection.query(queryString, function(err, userAndShops) {
@@ -77,9 +77,12 @@ router.post('/create', function(req,res) {
 			}else{
 
 				bcrypt.genSalt(10, function(err, salt) {
+					var name = req.body.firstname + ' ' + req.body.lastname
+					var role = 'user';
 
+					console.log('this is my fucking naem', name);
 						bcrypt.hash(req.body.password, salt, function(err, hash) {
-              user.createUser(['userName', 'emailAddress', 'password'], [req.body.username, req.body.email, hash], function(user){
+              user.createUser(['name','userName', 'emailAddress', 'password', 'role'], [name, req.body.username, req.body.email, hash, role], function(user){
 
                 req.session.username = req.body.username;//we need to grab the username from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.user_email = req.body.email; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.

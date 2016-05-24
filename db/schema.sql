@@ -1,23 +1,23 @@
 -- Schema - Structure of TT DB
-CREATE TABLE user
+CREATE TABLE users
 (
-    userId int NOT NULL AUTO_INCREMENT,
-    emailAddress varchar(255) NOT NULL,
-    userName varchar(255) NOT NULL,
+   userId int NOT NULL AUTO_INCREMENT,
+   emailAddress varchar(255) NOT NULL,
+   userName varchar(255) NOT NULL,
   	password varchar(255) NOT NULL,
-    name varchar(255) NOT NULL,
+   name varchar(255) NOT NULL,
 	role varchar(255) NOT NULL,
-    date TIMESTAMP,
-    PRIMARY KEY (userId)
+   date TIMESTAMP,
+   PRIMARY KEY (userId)
 );
 
 CREATE TABLE ordersGen
 (
-    orderNumber int ZEROFILL NOT NULL AUTO_INCREMENT,
-    date TIMESTAMP,
+   orderNumber int ZEROFILL NOT NULL AUTO_INCREMENT,
+   date TIMESTAMP,
 	userId int,
-	FOREIGN KEY (userId) REFERENCES user(userId),
-    PRIMARY KEY (orderNumber)
+	FOREIGN KEY (userId) REFERENCES users(userId),
+   PRIMARY KEY (orderNumber)
 );
 
 CREATE TABLE inventory
@@ -41,6 +41,6 @@ CREATE TABLE orders
     barcode varchar(255) NOT NULL,
     quantityPurchased int NOT NULL,
     userId int,
-    FOREIGN KEY (userId) REFERENCES user(userId),
+    FOREIGN KEY (userId) REFERENCES users(userId),
     FOREIGN KEY (orderNumber) REFERENCES ordersGen(orderNumber)
 );
