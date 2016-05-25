@@ -91,5 +91,6 @@ function removeItem(removeButton)
     console.log(cartToOrder);
     cartToOrder = JSON.parse(cartToOrder);
     console.log(cartToOrder.items);
+    console.log(items);
     console.log('***********************************');
  })

@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <h1>{{this.productName}}</h1>
-                                        SKU: {{this.sku}} by {{this.supplier}} 
+                                        SKU: {{this.sku}} by {{this.supplier}}
                                         <hr>
                                     </div>
                                 </div>
@@ -42,30 +42,30 @@
                                     <div class="col-md-12">
                                         <h3>Price: ${{this.price}}</h3>
                                         {{this.productDescription}}<br><br>
-                                      
+
                                     </div>
                                 </div>
 
                                 <div id="site">
                                     <div id="content">
                                         <div id="products">
-                                            <div class="product-description" data-name="{{this.productName}}" data-price="{{this.price}}">
-                                                <form class="add-to-cart" action="/cart" method="post">              
-                                                    <input type="hidden" name="barcode" value="{{this.barcode}}">
-                                                    <input type="hidden" name="userId" value="1">
-                                                    <input type="hidden" name="orderNumber" value="0000001">
+                                          <div class="product-description" barcode="{{this.barcode}}" data-name="{{this.productName}}" data-price="{{this.price}}">
+                                               <form class="add-to-cart" action="/cart" method="post">
+                                                   <input type="hidden" name="barcode" value="{{this.barcode}}">
+                                                   <input type="hidden" name="userId" value="1">
+                                                   <input type="hidden" name="orderNumber" value="0000001">
 
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                              <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <button type="submit" value="Add to cart" class="btn btn-success btn-md btn-block">Add To Cart</button>
-                                                        </div>
-                                                    </div> 
-                                                </form>
-                                            </div>
-                                        </div>
+                                                   <div class="row">
+                                                       <div class="col-md-4">
+                                                             <input type="text" name="qty-1" id="qty-1" class="qty" size="5" value="1" />
+                                                       </div>
+                                                       <div class="col-md-8">
+                                                           <button type="submit" value="Add to cart" class="btn btn-success btn-md btn-block">Add To Cart</button>
+                                                       </div>
+                                                   </div>
+                                               </form>
+                                           </div>
+                                       </div>
                                     </div>
                                 </div>
                               </div>

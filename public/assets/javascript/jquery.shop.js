@@ -246,13 +246,12 @@
 				if( items.length == 0 ) {
 					$tableCartBody.html( "" );
 				} else {
-
-
 					for( var i = 0; i < items.length; ++i ) {
 						var item = items[i];
 						var product = item.product;
 						var price = item.price;
 						var barcode = item.barcode;
+						console.log(item);
 						var qty = item.qty;
 						var totalValue = price*qty;
 					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-barcode'>" + barcode + "</div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price'>" + totalValue + "</div></div>";
@@ -366,32 +365,34 @@
 		// Adds items to the shopping cart
 
 		handleAddToCartForm: function() {
-			var self = this;
-			self.$formAddToCart.each(function() {
-				console.log(this,1);
-				$(document).on( "submit", 'form', function() {
-				var $form = $( this );
-				var $product = $form.parent();
-				var price = self._convertString( $product.data( "price" ) );
-				var name =  $product.data( "name" );
-					console.log(this,2);
-					var qty = self._convertString( $product.find( ".qty" ).val() );
-					var subTotal = qty * price;
-					var total = self._convertString( self.storage.getItem( self.total ) );
-					var sTotal = total + subTotal;
-					self.storage.setItem( self.total, sTotal );
-					self._addToCart({
-						product: name,
-						price: price,
-						qty: qty
-					});
-					var shipping = self._convertString( self.storage.getItem( self.shippingRates ) );
-					var shippingRates = self._calculateShipping( qty );
-					var totalShipping = shipping + shippingRates;
+            var self = this;
+            self.$formAddToCart.each(function() {
+                console.log(this,1);
+                $(document).on( "submit", 'form', function() {
+                var $form = $( this );
+                var $product = $form.parent();
+                var $barcode = $product.attr("barcode");
+                var price = self._convertString( $product.data( "price" ) );
+                var name =  $product.data( "name" );
+                    console.log(this,2);
+                    var qty = self._convertString( $product.find( ".qty" ).val() );
+                    var subTotal = qty * price;
+                    var total = self._convertString( self.storage.getItem( self.total ) );
+                    var sTotal = total + subTotal;
+                    self.storage.setItem( self.total, sTotal );
+                    self._addToCart({
+                        product: name,
+                        barcode: $barcode,
+                        price: price,
+                        qty: qty
+                    });
+                    var shipping = self._convertString( self.storage.getItem( self.shippingRates ) );
+                    var shippingRates = self._calculateShipping( qty );
+                    var totalShipping = shipping + shippingRates;
 
-					debugger;
-					self.storage.setItem( self.shippingRates, totalShipping );
-				});
+                    debugger;
+                    self.storage.setItem( self.shippingRates, totalShipping );
+                });
 			});
 		},
 
