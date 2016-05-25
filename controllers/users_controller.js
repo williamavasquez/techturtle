@@ -46,7 +46,6 @@ router.post('/login', function(req, res) {
 
 		if (user){
 			bcrypt.compare(req.body.password, user[0].password, function(err, result) {
-
 					if (result == true){
 
 						req.session.logged_in = true;
