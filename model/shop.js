@@ -7,6 +7,12 @@ var shop = {
 		});
 	},
 
+	allUsers: function(cb) {
+		orm.all('users', function(res){
+			cb(res);
+		});
+	},
+
 	allOrders: function(cb) {
 		orm.all('orders', function(res){
 			cb(res);
@@ -15,6 +21,12 @@ var shop = {
 
 	create: function(cols, vals, cb) {
 		orm.create('inventory', cols, vals, function(res){
+			cb(res);
+		});
+	},
+
+	createUser: function(cols, vals, cb) {
+		orm.createUser('users', cols, vals, function(res){
 			cb(res);
 		});
 	},
@@ -31,8 +43,20 @@ var shop = {
 		});
 	},
 
+	updateUser: function(objColVals, condition, cb) {
+		orm.update('users', objColVals, condition, function(res){
+			cb(res);
+		});
+	},
+
 	delete: function(condition, cb) {
 		orm.delete('inventory', condition, function(res){
+			cb(res);
+		});
+	},
+
+	deleteUser: function(condition, cb) {
+		orm.delete('users', condition, function(res){
 			cb(res);
 		});
 	},

@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 /* Set rates + misc */
 var taxRate = 0.05;
-var shippingRate = 15.00; 
+var shippingRate = 15.00;
 var fadeTime = 300;
 
 
@@ -23,17 +23,17 @@ $(document).on('click', '.product-removal button', function(e) {
 function recalculateCart()
 {
   var subtotal = 0;
-  
+
   /* Sum up row totals */
   $('.product').each(function () {
     subtotal += parseFloat($(this).children('.product-line-price').text());
   });
-  
+
   /* Calculate totals */
   var tax = subtotal * taxRate;
   var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
-  
+  total = subtotal + tax + shipping;
+
   /* Update totals display */
   $('.totals-value').fadeOut(fadeTime, function() {
     $('#cart-subtotal').html(subtotal.toFixed(2));
@@ -47,6 +47,7 @@ function recalculateCart()
     }
     $('.totals-value').fadeIn(fadeTime);
   });
+  return total
 }
 
 
@@ -59,7 +60,7 @@ function updateQuantity(quantityInput)
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
   var linePrice = price * quantity;
-  
+
   /* Update line price display and recalc cart totals */
   productRow.children('.product-line-price').each(function () {
     $(this).fadeOut(fadeTime, function() {
@@ -67,7 +68,7 @@ function updateQuantity(quantityInput)
       recalculateCart();
       $(this).fadeIn(fadeTime);
     });
-  });  
+  });
 }
 
 
@@ -83,3 +84,9 @@ function removeItem(removeButton)
   console.log(productRow);
   debugger;
 }
+// checkout function to save orders
+  $('.checkout').on('click',function(){
+      console.log('your total is');
+      totalforthecart = recalculateCart();
+      console.log(totalforthecart);
+ })

@@ -24,6 +24,34 @@ function objToSql(ob){
 }
 
 var orm = {
+  findOne: function(tableInput, condition, cb) {
+      var queryString = 'SELECT * FROM ' + tableInput;
+      queryString = queryString + ' WHERE ';
+      queryString = queryString + condition;
+      console.log(queryString);
+      connection.query(queryString, function(err, result) {
+          if (err) throw err;
+          cb(result);
+      });
+  },
+  createUser: function(table, cols, vals, cb) {
+    var queryString = 'INSERT INTO ' + table;
+
+    queryString = queryString + ' (';
+    queryString = queryString + cols.toString();
+    queryString = queryString + ') ';
+    queryString = queryString + 'VALUES (';
+    queryString = queryString + printQuestionMarks(vals.length);
+    queryString = queryString + ') ';
+
+    console.log(queryString)
+
+    connection.query(queryString, vals, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+
     all: function(tableInput, cb) {
         var queryString = 'SELECT * FROM ' + tableInput + ';';
         connection.query(queryString, function(err, result) {

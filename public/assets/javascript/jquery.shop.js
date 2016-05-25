@@ -250,6 +250,7 @@
 				
 					for( var i = 0; i < items.length; ++i ) {
 						var item = items[i];
+						console.log(item);
 						var product = item.product;
 						var price = item.price;
 						var qty = item.qty;
