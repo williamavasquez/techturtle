@@ -104,7 +104,15 @@ router.delete('/orders/delete/:barcode', function(req,res) {
 router.put('/inventory/update/:barcode', function(req,res) {
 	var condition = 'barcode = ' + req.params.barcode;
 	console.log('condition', condition);
-	shop.update({'productName ' : req.body.productName, ',productImage ' : req.body.productImage, ', productDescription ' : req.body.productDescription, ', sku ' : req.body.sku, ', category ' : req.body.category, ', quantity ' : req.body.quantity, ', price ' : req.body.price, ', supplier ' : req.body.supplier}, condition, function(data){
+	shop.update({
+		'productName ' : req.body.productName,
+		', productImage ' : req.body.productImage,
+		', productDescription ' : req.body.productDescription,
+		', sku ' : req.body.sku,
+		', category ' : req.body.category,
+		', quantity ' : req.body.quantity,
+		', price ' : req.body.price,
+		', supplier ' : req.body.supplier}, condition, function(data){
 		res.redirect('/inventory');
 	});
 });
@@ -116,5 +124,14 @@ router.put('/users/update/:userId', function(req,res) {
 		res.redirect('/users');
 	});
 });
+
+// router.post('/orders/create', function(req,res) {
+//
+// 	//need to add the user ID where the number 1 is
+// 	var condition = ' ( userId, date) VALUES ('+1+' ,now())';
+// 	shop.orderCreation(condition, function(data){
+// 		res.redirect('/')
+// 	});
+// });
 
 module.exports = router;

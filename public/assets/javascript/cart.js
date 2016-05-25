@@ -86,7 +86,10 @@ function removeItem(removeButton)
 }
 // checkout function to save orders
   $('.checkout').on('click',function(){
-      console.log('your total is');
-      totalforthecart = recalculateCart();
-      console.log(totalforthecart);
+    console.log('**********************************');
+    cartToOrder = sessionStorage.getItem('techturtlecart');
+    console.log(cartToOrder);
+    cartToOrder = JSON.parse(cartToOrder);
+    console.log(cartToOrder.items);
+    console.log('***********************************');
  })

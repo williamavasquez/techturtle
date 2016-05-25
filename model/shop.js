@@ -66,8 +66,12 @@ var shop = {
 		orm.delete('orders', condition, function(res){
 			cb(res);
 		});
+	},
+	orderCreation: function(condition, cb) {
+		orm.orderCreation(' ordersGen ', condition, function(res){
+			cb(res);
+		});
 	}
-
 };
 
 

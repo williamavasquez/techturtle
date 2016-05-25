@@ -66,9 +66,7 @@ var orm = {
       var queryString = 'INSERT INTO ' + table;
 
       queryString += ' (productName, productDescription, sku, category, productImage, quantity, price, supplier, barcode) ';
-
       queryString += 'VALUES';
-
       queryString += ' (';
       queryString = queryString + printQuestionMarks(vals.length);
       queryString += ') ';
@@ -116,12 +114,31 @@ var orm = {
   },
   delete: function(table, condition, cb){
     var queryString = 'DELETE FROM ' + table;
-    queryString = queryString + ' WHERE ';
-    queryString = queryString + condition;
+    queryString += ' WHERE ';
+    queryString += condition;
 
     connection.query(queryString, function(err, result) {
       if (err) throw err;
       cb(result);
+    });
+  },
+
+  orderCreation: function(table,condition,cb){
+    var queryString = 'INSERT INTO ' + table;
+    queryString += condition;
+    console.log(queryString);
+
+    //Creates the order number and associates it the userID
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      connection.end();
+    });
+    //grabs the recent created Order Number for later insert the products
+    var queryString = 'SELECT * FROM '+ table+ ' ORDER BY orderNumber DESC LIMIT 1'
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      currentOrderNumber = result[0].orderNumber;
+      console.log(currentOrderNumber);
     });
   }
 };
