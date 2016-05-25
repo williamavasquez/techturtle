@@ -1,4 +1,3 @@
-
 var orm = require('../config/orm.js');
 
 var shop = {
@@ -45,6 +44,5 @@ var shop = {
 	}
 
 };
-
 
 module.exports = shop;
