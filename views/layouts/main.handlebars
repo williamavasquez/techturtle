@@ -3,11 +3,15 @@
 <head>
 	<title>Tech Turtle</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/assets/javascript/script.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
 	<script type="text/javascript" src="/assets/javascript/jquery.shop.js"></script>
+	<script type="text/javascript" src="/assets/javascript/quagga.min.js"></script>
+	<script type="text/javascript" src="/assets/javascript/barcodescan.js"></script>
+
+	<script type="text/javascript" src="/assets/javascript/script.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -26,11 +30,20 @@
 	<div class="header clearfix">
 		<nav>
 		  <ul class="nav nav-pills pull-right">
-		    <li role="presentation"><a href="/">Welcome {{#each user}}{{this.name}}{{/each}}</a></li>
-		    <li role="presentation"><a href="/shop">Shop</a></li>
-		    <li role="presentation"><a href="/orders">Orders</a></li>
-		    <li role="presentation"><a href="/inventory">Inventory</a></li>
-		    <li role="presentation"><a href="/sign_in">Sign In</a></li>
+		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
+		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
+		    <li role="presentation"><a href="/users" class="whtText">Users</a></li>
+		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
+		    <li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
+
+			{{#unless logged_in}}
+		    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+			{{/unless}}
+
+			{{#if logged_in}}
+				<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
+			{{/if}}
+
 		  </ul>
 		</nav>
 		<span class="text-muted"><a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a></span>
@@ -41,6 +54,71 @@
 	<footer class="footer">
 		<p>&copy; 2016 Tech Turtle, Inc.</p>
 	</footer>
+    <!-- Modal Delete -->
+    <div id="sign-in" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><img src="/assets/images/logo_small.jpg" alt="Tech Turtle"></h4>
+          </div>
+          <div class="modal-body">
+	          <div class="row">
+				<div class="col-md-12" id="sign_in">
+				<h4>Sign In</h4>
+				<form class="form center-block" action="/users/login" method="POST">
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="email">
+					</div>
+					<div class="form-group">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+					</div>
+					<div class="form-group">
+					  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+					</div>
+				</form>
+				<p class="blkText">
+					Not already on Tech Turtle?
+					<a href="#" id="register_btn">Register Now</a>.
+				</p>
+				</div>
+
+				<div class="col-md-12" id="register">
+				<h4>Register</h4>
+				<form class="form center-block" action="/users/create" method="POST">
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="User Name" name="username">
+					</div>
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="Name" name="name">
+					</div>
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="Email" name="emailAddress">
+					</div>
+					<div class="form-group">
+					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+					</div>
+					<div class="form-group">
+					  <input type="text" class="form-control input-lg" placeholder="Role" name="role">
+					</div>
+					<div class="form-group">
+					  <button class="btn btn-primary btn-lg btn-block">Sign Up</button>
+					</div>
+				</form>
+				<p>
+					Already on Tech Turtle?
+					<a href="#" id="signIn_btn">Sign In</a>.
+				</p>
+				</div>
+	          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 </body>
 </html>

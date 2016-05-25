@@ -1,4 +1,9 @@
-<button data-toggle="modal" data-target="#addNew" class="btn btn-primary btn-lg btn-block">Add Product</button><br>
+<div class="row inventory">
+  <div class="col-md-12"> 
+    <button data-toggle="modal" data-target="#addNew" class="btn btn-success btn-sm">Enter Your Item</button>
+  </div>
+  <div class="col-md-12">&nbsp;</div>
+</div>
 <table id="inventory" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -19,13 +24,13 @@
             <tr>
                 <td><a href="#" data-toggle="modal" data-target="#productInventory-{{this.barcode}}"><img src="{{this.productImage}}" width="50px" height="50px" alt="{{this.productName}} {{this.productDescription}}"></a></td>
                 <td data-search="{{this.productName}}">{{this.productName}}</td>
-                <td>{{this.productDescription}}</td>
-                <td>{{this.sku}}</td>
-                <td>{{this.barcode}}</td>
+                <td data-search="{{this.productDescription}}">{{this.productDescription}}</td>
+                <td data-search="{{this.sku}}">{{this.sku}}</td>
+                <td data-search="{{this.barcode}}">{{this.barcode}}</td>
                 <td data-search="{{this.category}}">{{this.category}}</td>
                 <td>{{this.quantity}}</td>
                 <td>${{this.price}}</td>
-                <td>{{this.supplier}}</td>
+                <td data-search="{{this.supplier}}">{{this.supplier}}</td>
                 <td width="70" align="center">
                   <span>
                   <a href="#" data-toggle="modal" data-target="#productInventory-{{this.barcode}}"><img src="/assets/images/edit_btn.png" alt="edit"></a> <a href="#" data-toggle="modal" data-target="#delete-{{this.barcode}}"><img src="/assets/images/delete_btn.png" alt="delete"></a>
@@ -44,25 +49,28 @@
                   <div class="modal-body">
                     <form action="inventory/update/{{this.barcode}}?_method=PUT" method="POST" class="form col-md-12 center-block">
                         <div class="form-group">
-                          Name <input type="text" class="form-control input-lg" name="productName" value="{{this.productName}}">
+                          Name <input type="text" class="form-control input-md" name="productName" value="{{this.productName}}">
                         </div>
                         <div class="form-group">
-                          Description <input type="text" class="form-control input-lg" name="productDescription" value="{{this.productDescription}}">
+                          Description <input type="text" class="form-control input-md" name="productDescription" value="{{this.productDescription}}">
                         </div>
                         <div class="form-group">
-                          SKU <input type="text" class="form-control input-lg" name="sku" value="{{this.sku}}">
+                          Image <input type="text" class="form-control input-md" name="productImage" value="{{this.productImage}}">
                         </div>
                         <div class="form-group">
-                          Category <input type="text" class="form-control input-lg" name="category" value="{{this.category}}">
+                          SKU <input type="text" class="form-control input-md" name="sku" value="{{this.sku}}">
                         </div>
                         <div class="form-group">
-                          Quantity <input type="text" class="form-control input-lg" name="quantity" value="{{this.quantity}}">
+                          Category <input type="text" class="form-control input-md" name="category" value="{{this.category}}">
                         </div>
                         <div class="form-group">
-                          Price <input type="text" class="form-control input-lg" name="price" value="{{this.price}}">
+                          Quantity <input type="text" class="form-control input-md" name="quantity" value="{{this.quantity}}">
                         </div>
                         <div class="form-group">
-                          Supplier <input type="text" class="form-control input-lg" name="supplier" value="{{this.supplier}}">
+                          Price <input type="text" class="form-control input-md" name="price" value="{{this.price}}">
+                        </div>
+                        <div class="form-group">
+                          Supplier <input type="text" class="form-control input-md" name="supplier" value="{{this.supplier}}">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-primary btn-lg btn-block">Update</button>
@@ -95,7 +103,7 @@
                 </div>
               </div>
             </div>
-        {{/each}} 
+        {{/each}}
     </tbody>
 </table>
 
@@ -106,39 +114,43 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add New</h4>
+        <h4 class="modal-title">Enter Your Item</h4>
       </div>
       <div class="modal-body">
-        <form action="inventory/create" method="POST" class="form col-md-12 center-block">
+        <form action="inventory/create" method="POST" class="form center-block">
             <div class="form-group">
-              Name <input type="text" class="form-control input-lg" name="productName" required>
+              Name <input type="text" class="form-control input-md" name="productName" required>
             </div>
             <div class="form-group">
-              Description <input type="text" class="form-control input-lg" name="productDescription" required>
+              Description <input type="text" class="form-control input-md" name="productDescription" required>
             </div>
             <div class="form-group">
-              SKU <input type="text" class="form-control input-lg" name="sku" required>
+              SKU <input type="text" class="form-control input-md" name="sku" required>
             </div>
             <div class="form-group">
-              Barcode <input type="text" class="form-control input-lg" name="barcode" required>
+              Barcode <input type="text" class="form-control input-md" name="barcode" required>
             </div>
             <div class="form-group">
-              Image Url <input type="text" class="form-control input-lg" name="productImage" required>
+              Image Url <input type="text" class="form-control input-md" name="productImage" required>
             </div>
             <div class="form-group">
-              Category <input type="text" class="form-control input-lg" name="category" required>
+              Category <input type="text" class="form-control input-md" name="category" required>
             </div>
             <div class="form-group">
-              Quantity <input type="text" class="form-control input-lg" name="quantity" required>
+              Quantity <input type="text" class="form-control input-md" name="quantity" required>
             </div>
             <div class="form-group">
-              Price <input type="text" class="form-control input-lg" name="price" required>
+              Price <input type="text" class="form-control input-md" name="price" required>
             </div>
             <div class="form-group">
-              Supplier <input type="text" class="form-control input-lg" name="supplier" required>
+              Supplier <input type="text" class="form-control input-md" name="supplier" required>
+            </div>
+            <div id="barcodeScannerWindow">
+              <p>Please Scan Barcode</p>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">Add New</button>
+              <button id= "scan" type="button" class="btn btn-md  btn-warning">Scan Barcode</button>
+              <button class="btn btn-primary btn-md">Add New</button>
             </div>
         </form>
       </div>

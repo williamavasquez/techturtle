@@ -1,16 +1,21 @@
+$(document).ready(function() {
+  recalculateCart();
+});
+
 /* Set rates + misc */
 var taxRate = 0.05;
-var shippingRate = 15.00; 
+var shippingRate = 15.00;
 var fadeTime = 300;
 
 
 /* Assign actions */
-$('.product-quantity input').change( function() {
+$(document).on('change', '.product-quantity input', function() {
   updateQuantity(this);
 });
 
-$('.product-removal button').click( function() {
+$(document).on('click', '.product-removal button', function(e) {
   removeItem(this);
+  e.preventDefault();
 });
 
 
@@ -18,17 +23,17 @@ $('.product-removal button').click( function() {
 function recalculateCart()
 {
   var subtotal = 0;
-  
+
   /* Sum up row totals */
   $('.product').each(function () {
     subtotal += parseFloat($(this).children('.product-line-price').text());
   });
-  
+
   /* Calculate totals */
   var tax = subtotal * taxRate;
   var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
-  
+  total = subtotal + tax + shipping;
+
   /* Update totals display */
   $('.totals-value').fadeOut(fadeTime, function() {
     $('#cart-subtotal').html(subtotal.toFixed(2));
@@ -42,6 +47,7 @@ function recalculateCart()
     }
     $('.totals-value').fadeIn(fadeTime);
   });
+  return total
 }
 
 
@@ -50,10 +56,11 @@ function updateQuantity(quantityInput)
 {
   /* Calculate line price */
   var productRow = $(quantityInput).parent().parent();
+  debugger;
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
   var linePrice = price * quantity;
-  
+
   /* Update line price display and recalc cart totals */
   productRow.children('.product-line-price').each(function () {
     $(this).fadeOut(fadeTime, function() {
@@ -61,7 +68,7 @@ function updateQuantity(quantityInput)
       recalculateCart();
       $(this).fadeIn(fadeTime);
     });
-  });  
+  });
 }
 
 
@@ -69,11 +76,17 @@ function updateQuantity(quantityInput)
 function removeItem(removeButton)
 {
   /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
+  var productRow = $(removeButton).parent().parent()[0];
+  $(productRow).slideUp(fadeTime, function() {
     productRow.remove();
     recalculateCart();
   });
+  console.log(productRow);
+  debugger;
 }
-
-recalculateCart();
+// checkout function to save orders
+  $('.checkout').on('click',function(){
+      console.log('your total is');
+      totalforthecart = recalculateCart();
+      console.log(totalforthecart);
+ })
