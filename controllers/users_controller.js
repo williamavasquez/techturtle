@@ -64,24 +64,25 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/create', function(req,res) {
-	var queryString = "select * from users where emailAddress = '" + req.body.email + "'";
-
+	var queryString = "select * from users where emailAddress = '" + req.body.emailAddress + "'";
+	console.log(req.body);
+	console.log(queryString);
 	connection.query(queryString, function(err, users) {
 			if (err) throw err;
-
+			console.log(users.length);
 			if (users.length > 0){
 
 				res.send('we already have an email or username for this account');
 
 			}else{
-
+console.log('owens');
 				bcrypt.genSalt(10, function(err, salt) {
-					var name = req.body.firstname + ' ' + req.body.lastname
-					var role = 'user';
+					// var name = req.body.firstname + ' ' + req.b
+					// var role = 'user';
 
-					console.log('this is my fucking naem', name);
+					// console.log('this is my fucking naem', name);
 						bcrypt.hash(req.body.password, salt, function(err, hash) {
-              user.createUser(['name','userName', 'emailAddress', 'password', 'role'], [name, req.body.username, req.body.email, hash, role], function(user){
+              user.createUser(['name','userName', 'emailAddress', 'password', 'role'], [req.body.name, req.body.username, req.body.emailAddress, hash, req.body.role], function(user){
 
                 req.session.username = req.body.username;//we need to grab the username from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.user_email = req.body.email; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
