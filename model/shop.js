@@ -57,7 +57,7 @@ var shop = {
 	},
 
 	deleteUser: function(condition, cb) {
-		orm.delete('orders', condition, function(res){
+		orm.delete('users', condition, function(res){
 			cb(res);
 		});
 	},
