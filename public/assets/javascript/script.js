@@ -13,6 +13,9 @@ $(document).ready(function() {
 	    $("#register").hide();
 	});
 
+	var d = new Date();
+	document.getElementById("date").innerHTML = d.toDateString();
+	
   $("#scan").click(function(){
     $("#barcodeScannerWindow").show()
     $.getScript("/assets/javascript/barcodescan.js",function(){

@@ -27,26 +27,37 @@
 </head>
 <body>
 <div class="container">
-	<div class="header clearfix">
-		<nav>
-		  <ul class="nav nav-pills pull-right">
-		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
-		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
-		    <li role="presentation"><a href="/users" class="whtText">Users</a></li>
-		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
-		    <li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
+	<div class="row">
+		<div class="col-md-12">
+			<p id="date" class="pull-left date"></p>
+			<nav>
+			  <ul class="nav nav-pills pull-right">
+			    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
 
-			{{#unless logged_in}}
-		    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
-			{{/unless}}
+				{{#unless logged_in}}
+			    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
+				{{/unless}}
 
-			{{#if logged_in}}
-				<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
-			{{/if}}
+				{{#if logged_in}}
+					<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
+				{{/if}}
 
-		  </ul>
-		</nav>
-		<span class="text-muted"><a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a></span>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<a href="/"><img src="/assets/images/logo.jpg" alt="Tech Turtle"></a>
+		</div>
+		<div class="col-md-11">
+			<ul class="nav nav-pills">
+				<li role="presentation"><a href="/shop" class="whtNavText">Shop</a></li>
+				<li role="presentation"><a href="/users" class="whtNavText">Users</a></li>
+				<li role="presentation"><a href="/orders" class="whtNavText">Orders</a></li>
+				<li role="presentation"><a href="/inventory" class="whtNavText">Inventory</a></li>
+			</ul>
+		</div>
 	</div>
 
 	{{{ body }}}
