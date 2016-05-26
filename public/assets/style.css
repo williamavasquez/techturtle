@@ -9,6 +9,9 @@ p{
   line-height: 25px;
   font-size: 16px;
 }
+.jumboCarousel{
+  height: 375px;
+}
 h4{
   font-size: 22px;
 }
@@ -367,6 +370,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     width: 100%;
   }
 }
+.jumboCarousel{
+  height: 323px;
+}
 .container-narrow > hr {
   	margin: 30px 0;
 }
@@ -407,6 +413,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .jumbotron {
     border-bottom: 0;
   }
+.jumboCarousel{
+  height: 243px;
+}
 }
 
 /*Barcode Window on Modal Popup - Inventory section*/
