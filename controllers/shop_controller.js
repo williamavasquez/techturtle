@@ -61,6 +61,7 @@ router.get('/orders', function(req,res) {
 
 router.post('/cart', function(req,res) {
 	// res.send(req.body);
+	debugger;
 	console.log(req.body);
 		res.render('cart');
 });
@@ -71,7 +72,8 @@ router.post('/inventory/create', function(req,res) {
 	});
 });
 
-router.post('/users/create11', function(req,res) {
+
+router.post('/users/createNewUser', function(req,res) {
 	shop.createUser(['userName', 'name', 'emailAddress', 'password', 'role'], [req.body.username, req.body.name, req.body.emailAddress, req.body.password, req.body.role], function(data){
 		res.redirect('/users')
 	});

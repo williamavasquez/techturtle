@@ -250,8 +250,10 @@
 				
 					for( var i = 0; i < items.length; ++i ) {
 						var item = items[i];
+						debugger;
 						console.log(item);
 						var product = item.product;
+						var barcode = "111111";
 						var price = item.price;
 						var qty = item.qty;
 						var totalValue = price*qty;
@@ -372,6 +374,7 @@
 				$(document).on( "submit", 'form', function() {
 				var $form = $( this );
 				var $product = $form.parent();
+				var $barcode = $product.attr("barcode");
 				var price = self._convertString( $product.data( "price" ) );
 				var name =  $product.data( "name" );
 					console.log(this,2);
@@ -382,6 +385,7 @@
 					self.storage.setItem( self.total, sTotal );
 					self._addToCart({
 						product: name,
+						barcode: $barcode,
 						price: price,
 						qty: qty
 					});
