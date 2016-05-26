@@ -368,7 +368,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    width: 100%;
+    width: 90%;
   }
 }
 .jumboCarousel{
