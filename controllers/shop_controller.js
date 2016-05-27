@@ -59,6 +59,12 @@ router.get('/orders', function(req,res) {
 	});
 });
 
+router.get('/confirmation', function(req,res) {
+	shop.all(function(data){
+		res.render('confirmation');
+	});
+});
+
 router.post('/cart', function(req,res) {
 	// res.send(req.body);
 	debugger;
@@ -72,11 +78,30 @@ router.post('/inventory/create', function(req,res) {
 	});
 });
 
-
 router.post('/users/createNewUser', function(req,res) {
 	shop.createUser(['userName', 'name', 'emailAddress', 'password', 'role'], [req.body.username, req.body.name, req.body.emailAddress, req.body.password, req.body.role], function(data){
 		res.redirect('/users')
 	});
+});
+
+router.post('/ocreate', function(req,res) {
+    //need to add the user ID where the number 1 is
+    var condition = ' ( userId, date) VALUES ('+1+' ,now())';
+    shop.orderCreation(condition, function(data){
+        res.redirect('/confirmation');
+    });
+});
+
+router.post('/productsfromcart', function(req,res) {
+// we recieve the data from the front end, cut it up and send it to the DB
+	cartData = JSON.parse(req.body.test);
+	setTimeout(function(){
+	for (var i = 0; i < cartData.length; i++) {
+		var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 1;
+		shop.checkoutOrder(condition,function(data){
+		})
+		}
+	},1000)
 });
 
 router.delete('/inventory/delete/:barcode', function(req,res) {
@@ -126,32 +151,5 @@ router.put('/users/update/:userId', function(req,res) {
 		res.redirect('/users');
 	});
 });
-
-router.post('/ocreate', function(req,res) {
-    //need to add the user ID where the number 1 is
-    var condition = ' ( userId, date) VALUES ('+1+' ,now())';
-    shop.orderCreation(condition, function(data){
-        res.redirect('/confirmation');
-    });
-});
-
-router.get('/confirmation', function(req,res) {
-	shop.all(function(data){
-		res.render('confirmation');
-	});
-});
-
-router.post('/productsfromcart', function(req,res) {
-	// we recieve the data from the front end, cut it up and send it to the DB
-		cartData = JSON.parse(req.body.test);
-		setTimeout(function(){
-		for (var i = 0; i < cartData.length; i++) {
-			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 1;
-			shop.checkoutOrder(condition,function(data){
-			})
-			}
-		},1000)
-	});
-
 
 module.exports = router;
