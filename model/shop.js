@@ -71,7 +71,6 @@ var shop = {
 			cb(res);
 		});
 	}
-
 };
 
 module.exports = shop;
