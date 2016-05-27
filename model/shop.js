@@ -70,6 +70,11 @@ var shop = {
 		orm.orderCreation(' ordersGen ', condition, function(res){
 			cb(res);
 		});
+	},
+		checkoutOrder: function(condition, cb) {
+		orm.checkoutOrder(' orders ', condition, function(res){
+			cb(res);
+		});
 	}
 };
 

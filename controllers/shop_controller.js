@@ -137,13 +137,15 @@ router.post('/ocreate', function(req,res) {
 
 router.post('/productsfromcart', function(req,res) {
 	// we recieve the data from the front end, cut it up and send it to the DB
-	console.log('******Controller - cart info **********');
-		cartData = JSON.parse(req.body.test)
-		console.log(cartData[0]);
-	console.log('***********************');
+		cartData = JSON.parse(req.body.test);
+		setTimeout(function(){
+		for (var i = 0; i < cartData.length; i++) {
+			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 3;
+			shop.checkoutOrder(condition,function(data){
+			})
+			}
+		},1000)
 	});
-
-	console.log(res);
 
 
 module.exports = router;

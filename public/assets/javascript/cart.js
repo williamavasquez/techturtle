@@ -82,7 +82,6 @@ function removeItem(removeButton)
     recalculateCart();
   });
   console.log(productRow);
-  debugger;
 }
 //on click, data is sent to the backend for manipulation
 $('.checkout').on('click',function(){

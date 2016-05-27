@@ -126,22 +126,30 @@ var orm = {
   orderCreation: function(table,condition,cb){
   var queryString = 'INSERT INTO ' + table;
   queryString += condition;
-  console.log(queryString);
 
   //Creates the order number and associates it the userID
   connection.query(queryString, function(err, result) {
     if (err) throw err;
   });
-  //grabs the recent created Order Number for later insert the products
-  var queryString = 'SELECT * FROM '+ table+ ' ORDER BY orderNumber DESC LIMIT 1'
-  connection.query(queryString, function(err, result) {
+    cb();
+    // this.checkoutOrder()
+  },
+
+  checkoutOrder: function(table,condition,cb){
+  // //grabs the recent created Order Number for later insert the products
+    connection.query('SELECT * FROM ordersGen ORDER BY orderNumber DESC LIMIT 1', function(err, result) {
+      if (err) throw err;
+      currentOrderNumber = result[0].orderNumber;
+
+  var queryString = 'INSERT INTO ' + table + '(barcode, quantityPurchased, userId, orderNumber) VALUES ('+condition+',' + currentOrderNumber+')'
+  console.log(queryString);
+
+    connection.query(queryString, function(err, result) {
     if (err) throw err;
-    currentOrderNumber = result[0].orderNumber;
-    console.log(currentOrderNumber);
+    });
   });
     cb();
   }
-
 };
 
 module.exports = orm;
