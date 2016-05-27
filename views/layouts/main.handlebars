@@ -32,7 +32,7 @@
 			<p id="date" class="pull-left date"></p>
 			<nav>
 			  <ul class="nav nav-pills pull-right">
-			    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
+			    <li role="presentation"><a href="/" class="whtText">Welcome <!-- {{#each users}}{{this.name}}{{/each}} --></a></li>
 
 				{{#unless logged_in}}
 			    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
