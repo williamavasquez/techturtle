@@ -140,7 +140,7 @@ router.post('/productsfromcart', function(req,res) {
 		cartData = JSON.parse(req.body.test);
 		setTimeout(function(){
 		for (var i = 0; i < cartData.length; i++) {
-			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 3;
+			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 1;
 			shop.checkoutOrder(condition,function(data){
 			})
 			}
