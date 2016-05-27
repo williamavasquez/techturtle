@@ -123,7 +123,25 @@ var orm = {
       if (err) throw err;
       cb(result);
     });
-  }
+  },
+  orderCreation: function(table,condition,cb){
+  var queryString = 'INSERT INTO ' + table;
+  queryString += condition;
+  console.log(queryString);
+
+  //Creates the order number and associates it the userID
+  connection.query(queryString, function(err, result) {
+    if (err) throw err;
+  });
+  //grabs the recent created Order Number for later insert the products
+  var queryString = 'SELECT * FROM '+ table+ ' ORDER BY orderNumber DESC LIMIT 1'
+  connection.query(queryString, function(err, result) {
+    if (err) throw err;
+    currentOrderNumber = result[0].orderNumber;
+    console.log(currentOrderNumber);
+  });
+  cb();
+}
 };
 
 module.exports = orm;

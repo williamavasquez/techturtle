@@ -118,4 +118,22 @@ router.put('/users/update/:userId', function(req,res) {
 	});
 });
 
+
+router.post('/ocreate', function(req,res) {
+    //need to add the user ID where the number 1 is
+    var condition = ' ( userId, date) VALUES ('+1+' ,now())';
+    shop.orderCreation(condition, function(data){
+        // res.redirect('/');
+    });
+});
+
+router.post('/productsfromcart', function(req,res) {
+	// we recieve the data from the front end, cut it up and send it to the DB
+	console.log('******Controller - cart info **********');
+		cartData = JSON.parse(req.body.test)
+		console.log(cartData[0]);
+	console.log('***********************');
+	});
+	console.log(res);
+
 module.exports = router;
