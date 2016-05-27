@@ -49,9 +49,11 @@
                                 <div id="site">
                                     <div id="content">
                                         <div id="products">
-                                            <div class="product-description" barcode="{{this.barcode}}" data-name="{{this.productName}}" data-price="{{this.price}}">
+                                            <div class="product-description" barcode="{{this.barcode}}" productDescription="{{this.productDescription}}" productImage="{{this.productImage}}" data-name="{{this.productName}}" data-price="{{this.price}}">
                                                 <form class="add-to-cart" action="/cart" method="post">
                                                     <input type="hidden" name="barcode" value="{{this.barcode}}">
+                                                    <input type="hidden" name="productImage" value="{{this.productImage}}">
+                                                    <input type="hidden" name="productDescription" value="{{this.productDescription}}">
                                                     <input type="hidden" name="userId" value="1">
                                                     <input type="hidden" name="orderNumber" value="0000001">
                                                    <div class="row">
