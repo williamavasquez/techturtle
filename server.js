@@ -31,6 +31,7 @@ var users_controller = require('./controllers/users_controller.js');
 app.use('/', shop_controller);
 app.use('/shops', shop_controller);
 app.use('/users', users_controller);
+app.use('/orders',shop_controller);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){

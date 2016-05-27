@@ -82,11 +82,12 @@ function removeItem(removeButton)
     recalculateCart();
   });
   console.log(productRow);
-  debugger;
 }
-// checkout function to save orders
-  $('.checkout').on('click',function(){
-      console.log('your total is');
-      totalforthecart = recalculateCart();
-      console.log(totalforthecart);
- })
+//on click, data is sent to the backend for manipulation
+$('.checkout').on('click',function(){
+    cartToOrder = sessionStorage.getItem('techturtlecart');
+    cartToOrder = JSON.parse(cartToOrder);
+    cartToOrder = JSON.stringify(cartToOrder.items);
+    cartToOrder = {test : cartToOrder}
+    $.ajax({url: '/productsfromcart', method: 'POST', data: cartToOrder})
+});
