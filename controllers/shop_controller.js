@@ -131,8 +131,14 @@ router.post('/ocreate', function(req,res) {
     //need to add the user ID where the number 1 is
     var condition = ' ( userId, date) VALUES ('+1+' ,now())';
     shop.orderCreation(condition, function(data){
-        res.redirect('/');
+        res.redirect('/confirmation');
     });
+});
+
+router.get('/confirmation', function(req,res) {
+	shop.all(function(data){
+		res.render('confirmation');
+	});
 });
 
 router.post('/productsfromcart', function(req,res) {
