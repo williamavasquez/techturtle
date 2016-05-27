@@ -257,7 +257,7 @@
 						console.log(item);
 						var qty = item.qty;
 						var totalValue = price*qty;
-					    var html = "<div class='product'><div class='product-image'><img src='" + productImage + "'></div><div class='product-details'><div class='product-title'>" + product + "</div><div class='product-barcode'>" + barcode + "</div><div class='product-description'>" + productDescription + "</div></div><div class='product-price productPrice'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price productPrice'>" + totalValue + "</div></div>";
+					    var html = "<div class='product'><div class='product-image'><img src='" + productImage + "'></div><div class='product-details'><div class='product-title'>" + product + "</div><div class='product-barcode'>Barcode: " + barcode + "</div><div class='product-description'>" + productDescription + "</div></div><div class='product-price productPrice'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price productPrice'>" + totalValue + "</div></div>";
 
 						$tableCartBody.html( $tableCartBody.html() + html );
 					}

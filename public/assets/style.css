@@ -217,6 +217,13 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   color: green;
   font-size: 18px;
 }
+.shopHeaderLabels{
+  font-size: 16px;
+}
+.shopProductPrice{
+  color: green;
+  font-size: 16px;
+}
 .product .product-details .product-description {
   margin: 5px 20px 5px 0;
   line-height: 1.4em;
