@@ -72,6 +72,7 @@ router.post('/inventory/create', function(req,res) {
 	});
 });
 
+
 router.post('/users/createNewUser', function(req,res) {
 	shop.createUser(['userName', 'name', 'emailAddress', 'password', 'role'], [req.body.username, req.body.name, req.body.emailAddress, req.body.password, req.body.role], function(data){
 		res.redirect('/users')

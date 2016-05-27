@@ -1,8 +1,19 @@
 /* Space out content a bit */
 body {
   padding-bottom: 20px;
-  font-family: verdana;
+  font-family: arial, sans serif;
+  font-weight: normal;
   background:url(/assets/images/bg.jpg);
+}
+p{
+  line-height: 25px;
+  font-size: 16px;
+}
+.jumboCarousel{
+  height: 375px;
+}
+h4{
+  font-size: 22px;
 }
 .shop{
   margin-top: 20px;
@@ -17,17 +28,11 @@ body {
 }
 .nav-pills > .active > a:hover,.nav-pills > li > a:hover {
   text-decoration: none;
-  border-radius:0px;
-  border-bottom-width: 4px;
-  border-bottom-style: solid;
-  border-bottom-color: #FFFFFF;
-  color: #FFFFFF !important;
+  color: #96C83B !important;
   background-color: transparent !important;
 }
 .header {
   color: #ffffff;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #e5e5e5;
 }
 th{
 	color: #0F75BC;
@@ -44,7 +49,17 @@ thead{
 	background-color: #438EB9;
 }
 .whtText{
-	color: #ffffff;
+  color: #ffffff;
+}
+.whtNavText{
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 18px;
+  margin-right: 20px;
+}
+.date{
+  color: #ffffff;
+  font-size: 12px;
 }
 label{
 	font-weight: normal;
@@ -77,8 +92,12 @@ video {
   padding-top: 10px;
 }
 .shopping{
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 30px;
+  padding-top: 24px;
+}
+.newUserBtn{
+  margin-top: 4px;
+  float: right;
 }
 .inventory{
   margin-top: -25px;
@@ -345,16 +364,19 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 	border-top: 1px solid #e5e5e5;
 }
 
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    width: 100%;
+    width: 90%;
   }
+}
+.jumboCarousel{
+  height: 323px;
 }
 .container-narrow > hr {
   	margin: 30px 0;
 }
-
 /* Main marketing message and sign up button */
 .jumbotron {
 	text-align: center;
@@ -391,6 +413,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .jumbotron {
     border-bottom: 0;
   }
+.jumboCarousel{
+  height: 243px;
+}
 }
 
 /*Barcode Window on Modal Popup - Inventory section*/
@@ -402,4 +427,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 #barcodeScannerWindow video {
     position: inherit;
   	transform: none;
+}
+
+
+@media (min-width: 1500px) {
+  .jumboCarousel{
+    height: 323px;
+  }
 }
