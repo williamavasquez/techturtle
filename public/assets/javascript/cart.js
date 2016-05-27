@@ -84,7 +84,7 @@ function removeItem(removeButton)
   console.log(productRow);
   debugger;
 }
-// checkout function to save orders
+//on click, data is sent to the backend for manipulation
 $('.checkout').on('click',function(){
     cartToOrder = sessionStorage.getItem('techturtlecart');
     cartToOrder = JSON.parse(cartToOrder);
