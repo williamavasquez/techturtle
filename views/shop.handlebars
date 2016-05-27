@@ -15,8 +15,8 @@
                     {{#each this}}
                         <td data-search="{{this.productName}}" align="center">
                             <a href="#" data-toggle="modal" data-target="#shop-{{this.barcode}}"><img src="{{this.productImage}}" width="150" alt="{{this.productName}} {{this.price}}"></a><br>
-                            {{this.productName}}<br>
-                            {{this.price}} by {{this.supplier}}
+                            <span class="shopHeaderLabels">{{this.productName}}</span><br>
+                            <span class="shopProductPrice">${{this.price}}</span> by {{this.supplier}}
                         </td>
                         <!-- Modal Add New -->
                         <div id="shop-{{this.barcode}}" class="modal fade" role="dialog">
@@ -30,7 +30,7 @@
                               <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <img src="{{this.productImage}}" alt="{{this.productName}}">
+                                        <img src="{{this.productImage}}" width="300" alt="{{this.productName}}">
                                     </div>
                                     <div class="col-md-6">
                                         <h1>{{this.productName}}</h1>
