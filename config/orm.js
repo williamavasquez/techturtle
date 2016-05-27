@@ -141,8 +141,8 @@ var orm = {
       if (err) throw err;
       currentOrderNumber = result[0].orderNumber;
 
-  var queryString = 'INSERT INTO ' + table + '(barcode, quantityPurchased, userId, orderNumber) VALUES ('+condition+',' + currentOrderNumber+')'
-  console.log(queryString);
+    var queryString = 'INSERT INTO ' + table + '(barcode, quantityPurchased, userId, orderNumber) VALUES ('+condition+',' + currentOrderNumber+')'
+    console.log(queryString);
 
     connection.query(queryString, function(err, result) {
     if (err) throw err;

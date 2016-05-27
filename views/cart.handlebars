@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-md-12 shopping">
-    <h1>Shopping Cart</h1>
+    <h4>Shopping Cart</h4>
     <div class="row">
       <div class="col-md-12">
-        <div class="column-labels">
-          <label class="product-image">Image</label>
-          <label class="product-details">Product</label>
-          <label class = "product-barcode">Barcode</label>
-          <label class="product-price">Price</label>
-          <label class="product-quantity">Quantity</label>
-          <label class="product-removal">Remove</label>
-          <label class="product-line-price">Total</label>
+        <div class="column-labels cart">
+          <label class="product-image headerLabels">Image</label>
+          <label class="product-details headerLabels">Product</label>
+          <label class="product-price headerLabels">Price</label>
+          <label class="product-quantity headerLabels">Quantity</label>
+          <label class="product-removal headerLabels">Remove</label>
+          <label class="product-line-price headerLabels">Total</label>
+
         </div>
         <div id="site">
           <div id="content" class="cart">
@@ -27,26 +27,30 @@
         </div>
         <div class="totals cart">
           <div class="totals-item">
-            <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal"></div>
+            <label class="headerLabels">Subtotal:</label>
+            <div class="totals-value productPrice" id="cart-subtotal"></div>
           </div>
           <div class="totals-item">
-            <label>Tax (5%)</label>
-            <div class="totals-value" id="cart-tax"></div>
+            <label class="headerLabels">Tax (5%):</label>
+            <div class="totals-value headerLabels" id="cart-tax"></div>
           </div>
           <div class="totals-item">
-            <label>Shipping</label>
-            <div class="totals-value" id="cart-shipping"></div>
+            <label class="headerLabels">Shipping:</label>
+            <div class="totals-value headerLabels" id="cart-shipping"></div>
           </div>
           <div class="totals-item totals-item-total">
-            <label>Grand Total</label>
-            <div class="totals-value" id="cart-total"></div>
+            <label class="headerLabels">Grand Total:</label>
+            <div class="totals-value productPrice" id="cart-total"></div>
           </div>
         </div>
         <form action="/orders/ocreate" method="post">
           <button name="ordercreation" value="orderNumber" class="checkout btn btn-success btn-lg ">Checkout</button>
+<<<<<<< HEAD
         </form> -->
 
+=======
+        </form>
+>>>>>>> 5aff7a8e832deca74076e43fb9882dba3c2d10be
       </div>
     </div>
   </div>

@@ -250,13 +250,15 @@
 						var item = items[i];
 						console.log(item);
 						var product = item.product;
-						var barcode = "111111";
+						var productImage = item.productImage;
+						var productDescription = item.productDescription;
 						var price = item.price;
 						var barcode = item.barcode;
 						console.log(item);
 						var qty = item.qty;
 						var totalValue = price*qty;
-					    var html = "<div class='product'><div class='product-image'><img src='/assets/images/cpu_4.png'></div><div class='product-details'><div class='product-title'>" + product + "</div><p class='product-description'>Performance you can rely on. The essential business-class features and options that deliver the performance small and growing businesses need. Get $22 back in rewards</p></div><div class='product-barcode'>" + barcode + "</div><div class='product-price'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price'>" + totalValue + "</div></div>";
+
+					    var html = "<div class='product'><div class='product-image'><img src='" + productImage + "'></div><div class='product-details'><div class='product-title'>" + product + "</div><div class='product-barcode'>Barcode: " + barcode + "</div><div class='product-description'>" + productDescription + "</div></div><div class='product-price productPrice'>" + price + "</div><div class='product-quantity'><input type='number' value='" + qty + "' min='1'></div><div class='product-removal'><button type='button' class='remove-product'>Remove</button></div><div class='product-line-price productPrice'>" + totalValue + "</div></div>";
 
 						$tableCartBody.html( $tableCartBody.html() + html );
 					}
@@ -372,6 +374,8 @@
 				var $form = $( this );
 				var $product = $form.parent();
 				var $barcode = $product.attr("barcode");
+				var $productDescription = $product.attr("productDescription");
+				var $productImage = $product.attr("productImage");
 				var price = self._convertString( $product.data( "price" ) );
 				var name =  $product.data( "name" );
 					console.log(this,2);
@@ -383,6 +387,8 @@
 					self._addToCart({
 						product: name,
 						barcode: $barcode,
+						productDescription: $productDescription,
+						productImage: $productImage,
 						price: price,
 						qty: qty
 					});
