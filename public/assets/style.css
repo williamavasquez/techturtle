@@ -207,6 +207,13 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 .product .product-details .product-title {
   margin-right: 20px;
 }
+.product-title{
+  font-size: 22px;
+}
+.productPrice{
+  color: green;
+  font-size: 18px;
+}
 .product .product-details .product-description {
   margin: 5px 20px 5px 0;
   line-height: 1.4em;
