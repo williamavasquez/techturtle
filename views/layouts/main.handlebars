@@ -35,32 +35,20 @@
 		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
 		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
 				<li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
-<!--
-				{{#if heIsAUser}}
-				<li role="presentation"><a href="/users" class="whtText">booga</a></li>
-				{{/if}} -->
 
-				{{#unless heIsAUser}}
-				<li role="presentation"><a href="/users" class="whtText">Users</a></li>
-				{{/unless}}
-
-				{{#if  heIsAAdmin}}
+				{{#if heIsAAdmin}}
 				<li role="presentation"><a href="/users" class="whtText">Users</a></li>
 				{{/if}}
 
-
-				<!-- {{#if heIsAAdmin}} -->
-				<!-- {{#unless heIsAAdmin}} -->
-
-				<!-- {{/unless}} -->
-				<!-- {{/if}} -->
 
 			{{#unless logged_in}}
 		    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
 			{{/unless}}
 
 			{{#if logged_in}}
+
 				<li role="presentation"><a href="/users/sign-out" class="whtText">Sign Out</a></li>
+
 			{{/if}}
 
 		  </ul>
