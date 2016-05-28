@@ -6,7 +6,7 @@ var shop = require('../model/shop.js');
 
 router.get('/', function(req,res) {
 	shop.all(function(data){
-		var hbsObject = {logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+		var hbsObject = {logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
 
 		res.render('index', hbsObject);
 	});
@@ -64,8 +64,9 @@ router.get('/orders', function(req,res) {
 });
 
 router.post('/cart', function(req,res) {
+	var hbsObject = {logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
 	console.log(req.body);
-		res.render('cart');
+		res.render('cart', hbsObject);
 });
 
 router.post('/inventory/create', function(req,res) {
