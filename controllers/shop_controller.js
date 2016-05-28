@@ -180,9 +180,9 @@ var transporter = nodemailer.createTransport('smtps://williedeus%40gmail.com:112
 // setup e-mail data with unicode symbols
 var mailOptions = {
     from: '"Tech Turtles " <rcbtechturtle@gmail.com>', // sender address
-    to: 'williedeus@gmail.com,jefferyyourman@gmail.com,martoccijason@gmail.com,mstearne@gmail.com', // list of receivers
+    to: 'williedeus@gmail.com,jefferyyourman@gmail.com,martoccijason@gmail.com,mstearne@gmail.com,pavankat@gmail.com', // list of receivers
     subject: 'Thank you for your Purchase ', // Subject line
-    text: 'Thank you for your purchase at  techturtlec', // plaintext body
+    text: 'Thank you for your purchase at  Tech Turtle', // plaintext body
     html: '<h1>Your Purchase Number is: ' + hbsObject.orderNumber + '</h1><b>Come again! please purchase to save the turtles</b>' // html body
 };
 
