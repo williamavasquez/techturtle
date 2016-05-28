@@ -175,7 +175,7 @@ router.get('/confirmation', function(req,res){
 
     // });
 
-var transporter = nodemailer.createTransport('smtps://william.a.vassquez%40gmail.com:1123581321w@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://k27goat%40yahoo.com:3Yxkuyux@smtp.gmail.com');
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
