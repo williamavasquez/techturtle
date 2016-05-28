@@ -90,7 +90,9 @@ router.post('/create', function(req,res) {
                 req.session.username = req.body.username;//we need to grab the username from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.user_email = req.body.emailAddress; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.logged_in = true;
-                req.session.user_id = user.insertId; //the MySQL npm package returns the id of the record inserted with a key of insertId.
+                req.session.user_id = user.insertId;
+                sessionStorage.setItem('userId',req.session.user_id)
+                 //the MySQL npm package returns the id of the record inserted with a key of insertId.
 								// console.log('this is the connection.query for users', users);
 								// console.log('this is the user_id', user_id);
 								req.body.heIsAUser = 'user';

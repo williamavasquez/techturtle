@@ -153,9 +153,10 @@ router.post('/productsfromcart', function(req,res) {
 	});
 
 router.get('/confirmation', function(req,res){
-
-
-// var transporter = nodemailer.createTransport('smtps://'+gmail+'%40gmail.com:'+gmailpassword+'@smtp.gmail.com');
+	console.log('***********************');
+	console.log(req.session);
+console.log('***********************');
+// var transporter = nodemailer.createTransport('smtps://rcbtechturtle%40gmail.com:q1w2e3r4techturtle@smtp.gmail.com');
 //
 // // setup e-mail data with unicode symbols
 // var mailOptions = {

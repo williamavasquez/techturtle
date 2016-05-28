@@ -1,17 +1,18 @@
 {
   "name": "week-14-homework",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Node/Express/Handlebars all come together with a ORM",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/williamavasquez/week-14-homework.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "TechTurle Team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/williamavasquez/week-14-homework/issues"
@@ -30,5 +31,6 @@
     "nodemon": "^1.9.2",
     "normalize.css": "^4.1.1",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {}
 }
