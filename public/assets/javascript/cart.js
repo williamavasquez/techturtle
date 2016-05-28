@@ -79,6 +79,7 @@ function removeItem(removeButton)
   var productRow = $(removeButton).parent().parent()[0];
   $(productRow).slideUp(fadeTime, function() {
     productRow.remove();
+    // sessionStorage.remove()
     recalculateCart();
   });
   console.log(productRow);
@@ -90,4 +91,5 @@ $('.checkout').on('click',function(){
     cartToOrder = JSON.stringify(cartToOrder.items);
     cartToOrder = {test : cartToOrder}
     $.ajax({url: '/productsfromcart', method: 'POST', data: cartToOrder})
+    sessionStorage.clear();
 });
