@@ -10,22 +10,22 @@
         <h4>Order Information</h4>
         <p>
           Your order number is: {{orderNumber}}<br>
-          You will recive an email confirmation shortly at {customer email here}<br><br>
-          Items in your cart:<br>
+          You will recive an email confirmation shortly.<br><br>
+          <h4>Items in your cart:</h4>
           {{#each print}}
-            <ol>
-              <li><h3> Product : {{this.barcode}} </h3></li></br>
-              <h3>Quantity : {{this.qty}} </h3>
-            </ol>
+            <ul>
+              <li>Product : {{this.barcode}}</li>
+              <li>Quantity : {{this.qty}} </li>
+            </ul>
           {{/each}}
         </p>
 
       </div>
       <div class="col-md-5">
-        <h4>Customer Information</h4>
+        <h4>Customer Care</h4>
         <p>
-          Name: {customer name here}<br>
-          Email: {customer email here}
+          Phone: 888-TechTur<br>
+          Email: CustomerCare@TechTurtle.com
         </p>
 
         <h4>Free returns within 30 days</h4>
