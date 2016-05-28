@@ -151,25 +151,25 @@ router.post('/productsfromcart', function(req,res) {
 
 router.get('/confirmation', function(req,res){
 
-// create reusable transporter object using the default SMTP transport
-var transporter = nodemailer.createTransport('smtps://'+gmail+'%40gmail.com:'+gmailpassword+'@smtp.gmail.com');
 
-// setup e-mail data with unicode symbols
-var mailOptions = {
-    from: '"Fred Foo " <william.a.vasquez@gmail.com>', // sender address
-    to: 'williedeus@gmail.com,cecilia.s.covenas@gmail.com', // list of receivers
-    subject: 'Thank you for your Purchase ', // Subject line
-    text: 'Thank you for your purchase at  techturtlec ', // plaintext body
-    html: '<b>Come again! please purchase to save the turtles</b>' // html body
-};
-
-// send mail with defined transport object
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-});
+// var transporter = nodemailer.createTransport('smtps://'+gmail+'%40gmail.com:'+gmailpassword+'@smtp.gmail.com');
+//
+// // setup e-mail data with unicode symbols
+// var mailOptions = {
+//     from: '"Tech Turtles " <william.a.vasquez@gmail.com>', // sender address
+//     to: 'williedeus@gmail.com', // list of receivers
+//     subject: 'Thank you for your Purchase ', // Subject line
+//     text: 'Thank you for your purchase at  techturtlec ', // plaintext body
+//     html: '<b>Come again! please purchase to save the turtles</b>' // html body
+// };
+//
+// // send mail with defined transport object
+// transporter.sendMail(mailOptions, function(error, info){
+//     if(error){
+//         return console.log(error);
+//     }
+//     console.log('Message sent: ' + info.response);
+// });
 			res.render('confirmation');
 
 
