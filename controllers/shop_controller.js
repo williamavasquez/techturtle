@@ -175,11 +175,11 @@ router.get('/confirmation', function(req,res){
 
     // });
 
-var transporter = nodemailer.createTransport('smtps://k27goat%40yahoo.com:3Yxkuyux@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://anidaleeds%40gmail.com:3yxkuyux@smtp.gmail.com');
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: '"Tech Turtles " <william.a.vassquez@gmail.com>', // sender address
+    from: '"Tech Turtles " <anidaleeds@gmail.com>', // sender address
     to: 'williedeus@gmail.com,jefferyyourman@gmail.com,martoccijason@gmail.com,mstearne@gmail.com,pavankat@gmail.com', // list of receivers
     subject: 'Thank you for your Purchase ', // Subject line
     text: 'Thank you for your purchase at  Tech Turtle', // plaintext body
