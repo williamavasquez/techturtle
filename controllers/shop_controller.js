@@ -150,8 +150,11 @@ router.post('/productsfromcart', function(req,res) {
 	});
 
 router.get('/confirmation', function(req,res){
+	console.log(user);
+console.log(  req.session.user_id );
 
-
+// var gmail = //put your gmail address,
+// var gmailpassword = //but your gmail password
 // var transporter = nodemailer.createTransport('smtps://'+gmail+'%40gmail.com:'+gmailpassword+'@smtp.gmail.com');
 //
 // // setup e-mail data with unicode symbols
