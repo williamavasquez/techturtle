@@ -151,53 +151,48 @@ router.post('/productsfromcart', function(req,res) {
 	});
 
 router.get('/confirmation', function(req,res){
-	condition = req.session.user_id
-	console.log("This is req.session - " + req.session);
-	console.log("This is condition - " + condition);
-	debugger;
-		setTimeout(function(){
-			shop.confirmationQ(condition,function(data){
+	      condition = req.session.user_id;
+        setTimeout(function(){
+            shop.confirmationQ(condition,function(data){
 
-		var lastPurchase = data[data.length-1].orderNumber;
-		var hbrArray = []
-			for (var i = 0; i < data.length; i++) {
-				if (data[i].orderNumber == lastPurchase) {
-	console.log("This is data - " + data);
-							var  hbsObject = {
-								orderNumber : data[i].orderNumber,
-								barcode : data[i].barcode,
-								qty : data[i].quantityPurchased
-							}
-							hbrArray.push(hbsObject)
-			}
-		}
-		var hbsObject = {orderNumber: lastPurchase, print : hbrArray}
-		console.log(hbsObject);
-		res.render('confirmation',hbsObject);
-	})
-	// });
+        var lastPurchase = data[data.length-1].orderNumber;
+        var hbrArray = []
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].orderNumber == lastPurchase) {
+    console.log("This is data - " + data);
+                            var  hbsObject = {
+                                orderNumber : data[i].orderNumber,
+                                barcode : data[i].barcode,
+                                qty : data[i].quantityPurchased
+                            }
+                            hbrArray.push(hbsObject)
+            }
+        }
+        var hbsObject = {orderNumber: lastPurchase, print : hbrArray}
+        console.log(hbsObject);
+        res.render('confirmation',hbsObject);
 
+    // });
 
-// var transporter = nodemailer.createTransport('smtps://rcbtechturtle%40gmail.com:q1w2e3r4techturtle@smtp.gmail.com');
-//
-// // setup e-mail data with unicode symbols
-// var mailOptions = {
-//     from: '"Tech Turtles " <william.a.vasquez@gmail.com>', // sender address
-//     to: 'williedeus@gmail.com', // list of receivers
-//     subject: 'Thank you for your Purchase ', // Subject line
-//     text: 'Thank you for your purchase at  techturtlec ', // plaintext body
-//     html: '<b>Come again! please purchase to save the turtles</b>' // html body
-// };
-//
-// // send mail with defined transport object
-// transporter.sendMail(mailOptions, function(error, info){
-//     if(error){
-//         return console.log(error);
-//     }
-//     console.log('Message sent: ' + info.response);
-// });
-			// res.render('confirmation');
+var transporter = nodemailer.createTransport('smtps://williedeus%40gmail.com:1123581321w@smtp.gmail.com');
 
+// setup e-mail data with unicode symbols
+var mailOptions = {
+    from: '"Tech Turtles " <rcbtechturtle@gmail.com>', // sender address
+    to: 'williedeus@gmail.com,jefferyyourman@gmail.com,martoccijason@gmail.com,mstearne@gmail.com', // list of receivers
+    subject: 'Thank you for your Purchase ', // Subject line
+    text: 'Thank you for your purchase at  techturtlec', // plaintext body
+    html: '<h1>Your Purchase Number is: ' + hbsObject.orderNumber + '</h1><b>Come again! please purchase to save the turtles</b>' // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+});
+    })
 },1000)
 })
 
