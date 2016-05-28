@@ -5,7 +5,9 @@ var shop = require('../model/shop.js');
 
 router.get('/', function(req,res) {
 	shop.all(function(data){
-		var hbsObject = {logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+
+
+		var hbsObject = {logged_in: req.session.logged_in, heIsAUser: req.body.heIsAUser}
 
 		res.render('index', hbsObject);
 	});
@@ -20,7 +22,7 @@ router.get('/shop', function(req,res) {
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
 		//console.log(lists);
-		var hbsObject = {inventory : lists, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+		var hbsObject = {inventory : lists, logged_in: req.session.logged_in, heIsAUser: req.body.heIsAUser}
 		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
@@ -33,15 +35,15 @@ router.get('/product/:barcode', function(req,res) {
 
 router.get('/inventory', function(req,res) {
 	shop.all(function(data){
-		var hbsObject = {inventory : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
-		console.log(hbsObject)
+
+		var hbsObject = {inventory : data, logged_in: req.session.logged_in, heIsAUser: req.body.heIsAUser}
 		res.render('inventory', hbsObject);
 	});
 });
 
 router.get('/users', function(req,res) {
 	shop.allUsers(function(data){
-		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: req.body.heIsAUser}
 		res.render('users', hbsObject);
 	});
 });
@@ -56,7 +58,7 @@ router.get('/sign_in', function(req,res) {
 
 router.get('/orders', function(req,res) {
 	shop.allOrders(function(data){
-		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: req.body.heIsAUser}
 		console.log(hbsObject)
 		res.render('orders', hbsObject);
 	});

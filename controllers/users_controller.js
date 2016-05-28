@@ -40,27 +40,36 @@ router.post('/login', function(req, res) {
 	var condition = "emailAddress = '" + email + "'";
 
 	user.findOne(condition, function(user){
-console.log('this is the user log for after findone', user);
-console.log("this is a test for user[0].id after findONE", user[0].userId);
 		if (user){
 			bcrypt.compare(req.body.password, user[0].password, function(err, result) {
-
+console.log('line 45', user);
 					if (result == true){
-				console.log('this is the user log for after if statement', user);
+
 						req.session.logged_in = true;
 						req.session.user_id = user[0].userId;
+
 						// req.session.user_id = user.insertId;
 						req.session.user_email = user.email;
-						// console.log('test login for insertId', user.user.id);
-						console.log('test login for user_ID', req.session.user_id);
-						console.log('test login for user.id', user[0].userId);
+
 						// checking to see if the below code works
 						// =============
-						req.body.heIsAUser = 'user';
-						req.body.heIsAAdmin = 'admin';
+
+						if (user[0].role == 'admin') {
+							req.body.heIsAUser = true;
+							console.log('this is the fucking one', req.body.heIsAUser);
+						} else if (user[0].role == 'user') {
+							req.body.heIsAUser = false;
+							console.log('this is the fucking one', req.body.heIsAUser);
+						}
+						//
+						console.log('this is a test for heisauser is passing through false or true', req.body.heIsAUser);
+						// user[0].role
+						// console.log('line 55', user[0].role);
+						// req.body.heIsAUser = user[0].role;
+						// console.log('line 57', req.body.heIsAUser);
+						// req.body.heIsAAdmin = req.body.role;
 						// console.log('this is an admin', req.body.heIsAAdmin);
-						console.log('this is an user', req.body.heIsAUser);
-						console.log('this is a ', req.body.role);
+						// console.log('this is a ', req.body.heIsAAdmin);
 						// console.log('this is a ', req.body.heIsAAdmin);
 						// ========53-58 is currently being tested
 
@@ -97,19 +106,27 @@ router.post('/create', function(req,res) {
                 req.session.user_email = req.body.emailAddress; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.logged_in = true;
                 req.session.user_id = user.insertId; //the MySQL npm package returns the id of the record inserted with a key of insertId.
-								// console.log('this is the connection.query for users', users);
-								// console.log('this is the user_id', user_id);
-								console.log('test create for insertId', user.insertId);
-								console.log('test create for user_ID', req.session.user_id);
-								req.body.heIsAUser = 'user';
-								req.body.heIsAAdmin = 'admin';
+								console.log('logging the role', req.body.role);
+
+								if (req.body.role == 'admin') {
+									req.body.heIsAUser = true;
+									console.log('this is the fucking one', req.body.heIsAUser);
+								} else if (req.body.role == 'user') {
+									req.body.heIsAUser = false;
+									console.log('this is the fucking one', req.body.heIsAUser);
+								}
+								//
+								console.log('this is a test for heisauser is passing through false or true', req.body.heIsAUser);
+								// req.body.heIsAUser = 'admin';
+								// req.body.heIsAAdmin = 'admin';
 								// console.log('this is an admin', req.body.heIsAAdmin);
-								console.log('this is an user', req.body.heIsAUser);
-								console.log('this is a ', req.body.role);
+								// console.log('this is a ', req.body.heIsAUser);
+								// console.log('this is a ', req.body.heIsAAdmin);
+								// console.log('this is a ', req.body.role);
 								// console.log('this is a ', req.body.heIsAAdmin);
 
 								//the below log is when you create a new user it will show the insertId
-								console.log('this is my user log', user);
+
                 res.redirect('/shop')
 
             	});
