@@ -51,6 +51,7 @@ console.log("this is a test for user[0].id after findONE", user[0].userId);
 						req.session.user_id = user[0].userId;
 						// req.session.user_id = user.insertId;
 						req.session.user_email = user.email;
+<<<<<<< HEAD
 						// console.log('test login for insertId', user.user.id);
 						console.log('test login for user_ID', req.session.user_id);
 						console.log('test login for user.id', user[0].userId);
@@ -63,6 +64,18 @@ console.log("this is a test for user[0].id after findONE", user[0].userId);
 						console.log('this is a ', req.body.role);
 						// console.log('this is a ', req.body.heIsAAdmin);
 						// ========53-58 is currently being tested
+=======
+						
+						if (user[0].role == 'admin') {
+							req.session.isAdmin = true;
+							debugger;
+							console.log('This is admin - ', req.session.isAdmin);
+						} else if (user[0].role == 'user') {
+							req.session.isUser = true;
+							debugger;
+							console.log('This is user - ', req.session.isUser);
+						}
+>>>>>>> origin/jasons_branch
 
 						res.redirect('/shop');
 

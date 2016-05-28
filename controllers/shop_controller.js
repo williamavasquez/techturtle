@@ -21,7 +21,11 @@ router.get('/shop', function(req,res) {
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
 		//console.log(lists);
+<<<<<<< HEAD
 		var hbsObject = {inventory : lists, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+=======
+		var hbsObject = {inventory : lists, logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
+>>>>>>> origin/jasons_branch
 		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
@@ -34,7 +38,11 @@ router.get('/product/:barcode', function(req,res) {
 
 router.get('/inventory', function(req,res) {
 	shop.all(function(data){
+<<<<<<< HEAD
 		var hbsObject = {inventory : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+=======
+		var hbsObject = {inventory : data, logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
+>>>>>>> origin/jasons_branch
 		console.log(hbsObject)
 		res.render('inventory', hbsObject);
 	});
@@ -42,7 +50,11 @@ router.get('/inventory', function(req,res) {
 
 router.get('/users', function(req,res) {
 	shop.allUsers(function(data){
+<<<<<<< HEAD
 		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+=======
+		var hbsObject = {users : data, logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
+>>>>>>> origin/jasons_branch
 		res.render('users', hbsObject);
 	});
 });
@@ -57,7 +69,11 @@ router.get('/sign_in', function(req,res) {
 
 router.get('/orders', function(req,res) {
 	shop.allOrders(function(data){
+<<<<<<< HEAD
 		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+=======
+		var hbsObject = {orders : data, logged_in: req.session.logged_in, isUser: req.session.isUser, isAdmin: req.session.isAdmin}
+>>>>>>> origin/jasons_branch
 		console.log(hbsObject)
 		res.render('orders', hbsObject);
 	});
@@ -153,6 +169,11 @@ router.post('/productsfromcart', function(req,res) {
 router.get('/confirmation', function(req,res){
 	condition = req.session.user_id
 	console.log(req.session);
+<<<<<<< HEAD
+=======
+	console.log(condition);
+	debugger;
+>>>>>>> origin/jasons_branch
 		setTimeout(function(){
 			shop.confirmationQ(condition,function(data){
 
@@ -198,4 +219,8 @@ router.get('/confirmation', function(req,res){
 },1000)
 })
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> origin/jasons_branch
