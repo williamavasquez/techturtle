@@ -27,12 +27,18 @@
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<p id="date" class="pull-left date"></p>
-			<nav>
-			  <ul class="nav nav-pills pull-right">
-			    <li role="presentation"><a href="/" class="whtText">Welcome <!-- {{#each users}}{{this.name}}{{/each}} --></a></li>
+	<div class="header clearfix">
+		<nav>
+		  <ul class="nav nav-pills pull-right">
+
+		    <li role="presentation"><a href="/" class="whtText">Welcome {{#each users}}{{this.name}}{{/each}}</a></li>
+		    <li role="presentation"><a href="/shop" class="whtText">Shop</a></li>
+		    <li role="presentation"><a href="/orders" class="whtText">Orders</a></li>
+				<li role="presentation"><a href="/inventory" class="whtText">Inventory</a></li>
+
+				{{#if heIsAAdmin}}
+				<li role="presentation"><a href="/users" class="whtText">Users</a></li>
+				{{/if}}
 
 				{{#unless logged_in}}
 			    	<li role="presentation"><a href="#" data-toggle="modal" data-target="#sign-in" class="whtText">Sign In</a></li>
@@ -111,7 +117,7 @@
 					  <input type="password" class="form-control input-lg" placeholder="Password" name="password">
 					</div>
 					<div class="form-group">
-					  <input type="hidden" value='user' class="form-control input-lg" placeholder="Role" name="role">
+					  <input type="hidden" value='admin' class="form-control input-lg" placeholder="Role" name="role">
 					</div>
 					<div class="form-group">
 					  <button class="btn btn-primary btn-lg btn-block">Sign Up</button>

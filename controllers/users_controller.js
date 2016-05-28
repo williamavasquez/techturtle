@@ -26,9 +26,6 @@ router.get('/', function(req,res) {
 	res.render('sign_in');
 });
 
-router.get('/', function(req,res) {
-	res.render('sign_in');
-});
 
 router.get('/sign-out', function(req,res) {
   req.session.destroy(function(err) {
@@ -51,8 +48,19 @@ router.post('/login', function(req, res) {
 						req.session.logged_in = true;
 						req.session.user_id = user.id;
 						req.session.user_email = user.email;
+						// checking to see if the below code works
+						// =============
+						req.body.heIsAUser = 'user';
+						req.body.heIsAAdmin = 'admin';
+						console.log('this is an admin', req.body.heIsAAdmin);
+						console.log('this is an user', req.body.heIsAUser);
+						console.log('this is a ', req.body.role);
+						console.log('this is a ', req.body.heIsAAdmin);
+						// ========53-58 is currently being tested
 
 						res.redirect('/shop');
+
+
 					}else{
             res.send('You put in the wrong password.')
           }
@@ -65,17 +73,12 @@ router.post('/login', function(req, res) {
 
 router.post('/create', function(req,res) {
 	var queryString = "select * from users where emailAddress = '" + req.body.emailAddress + "'";
-	console.log(req.body);
-	console.log(queryString);
 	connection.query(queryString, function(err, users) {
 			if (err) throw err;
-			console.log(users.length);
 			if (users.length > 0){
-
 				res.send('we already have an email or username for this account');
 
 			}else{
-console.log('owens');
 				bcrypt.genSalt(10, function(err, salt) {
 					// var name = req.body.firstname + ' ' + req.b
 					// var role = 'user';
@@ -85,19 +88,35 @@ console.log('owens');
               user.createUser(['name','userName', 'emailAddress', 'password', 'role'], [req.body.name, req.body.username, req.body.emailAddress, hash, req.body.role], function(user){
 
                 req.session.username = req.body.username;//we need to grab the username from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
-                req.session.user_email = req.body.email; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
+                req.session.user_email = req.body.emailAddress; //we need to grab the email from the form because we don't get it back from MySQL. If we wanted to grab it, then we'd have to do another sql query but it's unnecessary since we already have it here.
                 req.session.logged_in = true;
                 req.session.user_id = user.insertId; //the MySQL npm package returns the id of the record inserted with a key of insertId.
+								// console.log('this is the connection.query for users', users);
+								// console.log('this is the user_id', user_id);
+								req.body.heIsAUser = 'user';
+								req.body.heIsAAdmin = 'admin';
+								console.log('this is an admin', req.body.heIsAAdmin);
+								console.log('this is an user', req.body.heIsAUser);
+								console.log('this is a ', req.body.role);
+								console.log('this is a ', req.body.heIsAAdmin);
 
+								//the below log is when you create a new user it will show the insertId
+								console.log('this is my user log', user);
                 res.redirect('/shop')
-								console.log(req.session);
-								console.log(req.session.logged_in);
-								console.log(req.session.username);
-            	});
 
+								//
+								// var queryString1 = "select * from users where role = '" + req.body.role + "'";
+								// connection.query(queryString1, function(err, users){
+								// 	if (err) throw err;
+								// 		req.body.heIsAUser = req.body.role;
+								// 		console.log(req.body.heIsAUser,'wow only a user, booooo');
+								// });
+
+
+
+            	});
 						});
 				});
-
 			}
 	});
 });
