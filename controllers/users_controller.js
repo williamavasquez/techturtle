@@ -49,7 +49,7 @@ router.post('/login', function(req, res) {
 					if (result == true){
 
 						req.session.logged_in = true;
-						req.session.user_id = user.id;
+						req.session.user_id = user[0].userId;
 						req.session.user_email = user.email;
 						
 						if (user[0].role == 'admin') {

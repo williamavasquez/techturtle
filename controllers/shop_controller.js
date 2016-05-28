@@ -152,8 +152,8 @@ router.post('/productsfromcart', function(req,res) {
 
 router.get('/confirmation', function(req,res){
 	condition = req.session.user_id
-	console.log(req.session);
-	console.log(condition);
+	console.log("This is req.session - " + req.session);
+	console.log("This is condition - " + condition);
 	debugger;
 		setTimeout(function(){
 			shop.confirmationQ(condition,function(data){
@@ -162,6 +162,7 @@ router.get('/confirmation', function(req,res){
 		var hbrArray = []
 			for (var i = 0; i < data.length; i++) {
 				if (data[i].orderNumber == lastPurchase) {
+	console.log("This is data - " + data);
 							var  hbsObject = {
 								orderNumber : data[i].orderNumber,
 								barcode : data[i].barcode,

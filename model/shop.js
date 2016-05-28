@@ -67,12 +67,12 @@ var shop = {
 		});
 	},
 	orderCreation: function(condition, cb) {
-		orm.orderCreation(' ordersGen ', condition, function(res){
+		orm.orderCreation('ordersGen', condition, function(res){
 			cb(res);
 		});
 	},
 		checkoutOrder: function(condition, cb) {
-		orm.checkoutOrder(' orders ', condition, function(res){
+		orm.checkoutOrder('orders', condition, function(res){
 			cb(res);
 		});
 	},

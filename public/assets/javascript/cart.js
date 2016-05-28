@@ -90,4 +90,5 @@ $('.checkout').on('click',function(){
     cartToOrder = JSON.stringify(cartToOrder.items);
     cartToOrder = {test : cartToOrder}
     $.ajax({url: '/productsfromcart', method: 'POST', data: cartToOrder})
+    sessionStorage.clear();
 });
