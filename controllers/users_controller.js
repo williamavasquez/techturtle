@@ -51,6 +51,16 @@ router.post('/login', function(req, res) {
 						req.session.logged_in = true;
 						req.session.user_id = user.id;
 						req.session.user_email = user.email;
+						
+						if (user[0].role == 'admin') {
+							req.session.isAdmin = true;
+							debugger;
+							console.log('This is admin - ', req.session.isAdmin);
+						} else if (user[0].role == 'user') {
+							req.session.isUser = true;
+							debugger;
+							console.log('This is user - ', req.session.isUser);
+						}
 
 						res.redirect('/shop');
 					}else{

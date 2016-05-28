@@ -52,10 +52,16 @@
 		</div>
 		<div class="col-md-10">
 			<ul class="nav nav-pills">
-				<li role="presentation"><a href="/shop" class="whtNavText">Shop</a></li>
-				<li role="presentation"><a href="/users" class="whtNavText">Users</a></li>
-				<li role="presentation"><a href="/orders" class="whtNavText">Orders</a></li>
-				<li role="presentation"><a href="/inventory" class="whtNavText">Inventory</a></li>
+				{{#if isUser}}
+					<li role="presentation"><a href="/shop" class="whtNavText">Shop</a></li>
+				{{/if}}		    
+
+				{{#if isAdmin}}
+					<li role="presentation"><a href="/shop" class="whtNavText">Shop</a></li>
+					<li role="presentation"><a href="/users" class="whtNavText">Users</a></li>
+					<li role="presentation"><a href="/orders" class="whtNavText">Orders</a></li>
+					<li role="presentation"><a href="/inventory" class="whtNavText">Inventory</a></li>
+				{{/if}}
 			</ul>
 		</div>
 	</div>
