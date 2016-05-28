@@ -9,10 +9,15 @@
       <div class="col-md-4">
         <h4>Order Information</h4>
         <p>
-          Your order number is: {order number here}<br>
+          Your order number is: {{orderNumber}}<br>
           You will recive an email confirmation shortly at {customer email here}<br><br>
           Items in your cart:<br>
-          {cart items}
+          {{#each print}}
+            <ol>
+              <li><h3> Product : {{this.barcode}} </h3></li></br>
+              <h3>Quantity : {{this.qty}} </h3>
+            </ol>
+          {{/each}}
         </p>
 
       </div>

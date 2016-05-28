@@ -64,8 +64,6 @@ router.get('/orders', function(req,res) {
 });
 
 router.post('/cart', function(req,res) {
-	// res.send(req.body);
-	debugger;
 	console.log(req.body);
 		res.render('cart');
 });
@@ -133,7 +131,7 @@ router.put('/users/update/:userId', function(req,res) {
 
 router.post('/ocreate', function(req,res) {
     //need to add the user ID where the number 1 is
-    var condition = ' ( userId, date) VALUES ('+1+' ,now())';
+    var condition = ' ( userId, date) VALUES ('+req.session.user_id+' ,now())';
     shop.orderCreation(condition, function(data){
         res.redirect('/confirmation');
     });
@@ -145,7 +143,7 @@ router.post('/productsfromcart', function(req,res) {
 
 		setTimeout(function(){
 		for (var i = 0; i < cartData.length; i++) {
-			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 1;
+			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+req.session.user_id;
 			shop.checkoutOrder(condition,function(data){
 			})
 			}
@@ -153,9 +151,30 @@ router.post('/productsfromcart', function(req,res) {
 	});
 
 router.get('/confirmation', function(req,res){
-	console.log('***********************');
+	condition = req.session.user_id
 	console.log(req.session);
-console.log('***********************');
+		setTimeout(function(){
+			shop.confirmationQ(condition,function(data){
+
+		var lastPurchase = data[data.length-1].orderNumber;
+		var hbrArray = []
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].orderNumber == lastPurchase) {
+							var  hbsObject = {
+								orderNumber : data[i].orderNumber,
+								barcode : data[i].barcode,
+								qty : data[i].quantityPurchased
+							}
+							hbrArray.push(hbsObject)
+			}
+		}
+		var hbsObject = {orderNumber: lastPurchase, print : hbrArray}
+		console.log(hbsObject);
+		res.render('confirmation',hbsObject);
+	})
+	// });
+
+
 // var transporter = nodemailer.createTransport('smtps://rcbtechturtle%40gmail.com:q1w2e3r4techturtle@smtp.gmail.com');
 //
 // // setup e-mail data with unicode symbols
@@ -174,9 +193,9 @@ console.log('***********************');
 //     }
 //     console.log('Message sent: ' + info.response);
 // });
-			res.render('confirmation');
+			// res.render('confirmation');
 
-
+},1000)
 })
 
 module.exports = router;
