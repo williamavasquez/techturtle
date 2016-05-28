@@ -1,17 +1,18 @@
 {
-  "name": "week-14-homework",
-  "version": "1.0.0",
-  "description": "Node/Express/Handlebars all come together with a ORM",
+  "name": "TechTurle",
+  "version": "1.1.1",
+  "description": "Free Ecommerce, to free the world",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/williamavasquez/week-14-homework.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "TechTurle Team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/williamavasquez/week-14-homework/issues"
@@ -26,8 +27,10 @@
     "express-session": "^1.13.0",
     "method-override": "^2.3.5",
     "mysql": "^2.10.2",
+    "nodemailer": "^2.4.2",
     "nodemon": "^1.9.2",
     "normalize.css": "^4.1.1",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {}
 }

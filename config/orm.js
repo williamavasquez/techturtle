@@ -141,14 +141,21 @@ var orm = {
       if (err) throw err;
       currentOrderNumber = result[0].orderNumber;
 
-  var queryString = 'INSERT INTO ' + table + '(barcode, quantityPurchased, userId, orderNumber) VALUES ('+condition+',' + currentOrderNumber+')'
-  console.log(queryString);
+    var queryString = 'INSERT INTO ' + table + '(barcode, quantityPurchased, userId, orderNumber) VALUES ('+condition+',' + currentOrderNumber+')'
 
     connection.query(queryString, function(err, result) {
     if (err) throw err;
     });
   });
     cb();
+  },
+  confirmationQ : function(table,condition,cb){
+    var queryString = 'select * from orders where userId = '+condition;
+
+    connection.query(queryString, function(err,result){
+      if (err) throw err;
+      cb(result)
+    });
   }
 };
 

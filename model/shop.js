@@ -75,7 +75,12 @@ var shop = {
 		orm.checkoutOrder(' orders ', condition, function(res){
 			cb(res);
 		});
-	}
+	},
+	confirmationQ: function(condition,cb) {
+		orm.confirmationQ('orders',condition, function(res){
+			cb(res);
+		});
+	},
 };
 
 module.exports = shop;

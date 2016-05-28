@@ -2,12 +2,16 @@ var express = require('express');
 var _ = require('underscore');
 var router = express.Router();
 var shop = require('../model/shop.js');
+	var nodemailer = require('nodemailer');
 
 router.get('/', function(req,res) {
 	shop.all(function(data){
-		res.render('index');
+		var hbsObject = {logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
+
+		res.render('index', hbsObject);
 	});
 });
+
 
 router.get('/shop', function(req,res) {
 	shop.all(function(data){
@@ -17,7 +21,7 @@ router.get('/shop', function(req,res) {
 		});
 		lists = _.toArray(lists); //Added this to convert the returned object to an array.
 		//console.log(lists);
-		var hbsObject = {inventory : lists, logged_in: req.session.logged_in}
+		var hbsObject = {inventory : lists, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
 		//console.log(hbsObject)
 		res.render('shop', hbsObject);
 	});
@@ -30,7 +34,7 @@ router.get('/product/:barcode', function(req,res) {
 
 router.get('/inventory', function(req,res) {
 	shop.all(function(data){
-		var hbsObject = {inventory : data}
+		var hbsObject = {inventory : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
 		console.log(hbsObject)
 		res.render('inventory', hbsObject);
 	});
@@ -38,7 +42,7 @@ router.get('/inventory', function(req,res) {
 
 router.get('/users', function(req,res) {
 	shop.allUsers(function(data){
-		var hbsObject = {users : data}
+		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
 		res.render('users', hbsObject);
 	});
 });
@@ -53,21 +57,13 @@ router.get('/sign_in', function(req,res) {
 
 router.get('/orders', function(req,res) {
 	shop.allOrders(function(data){
-		var hbsObject = {orders : data}
+		var hbsObject = {users : data, logged_in: req.session.logged_in, heIsAUser: 'user', heIsAAdmin: 'admin'}
 		console.log(hbsObject)
 		res.render('orders', hbsObject);
 	});
 });
 
-router.get('/confirmation', function(req,res) {
-	shop.all(function(data){
-		res.render('confirmation');
-	});
-});
-
 router.post('/cart', function(req,res) {
-	// res.send(req.body);
-	debugger;
 	console.log(req.body);
 		res.render('cart');
 });
@@ -78,30 +74,11 @@ router.post('/inventory/create', function(req,res) {
 	});
 });
 
+
 router.post('/users/createNewUser', function(req,res) {
 	shop.createUser(['userName', 'name', 'emailAddress', 'password', 'role'], [req.body.username, req.body.name, req.body.emailAddress, req.body.password, req.body.role], function(data){
 		res.redirect('/users')
 	});
-});
-
-router.post('/ocreate', function(req,res) {
-    //need to add the user ID where the number 1 is
-    var condition = ' ( userId, date) VALUES ('+1+' ,now())';
-    shop.orderCreation(condition, function(data){
-        res.redirect('/confirmation');
-    });
-});
-
-router.post('/productsfromcart', function(req,res) {
-// we recieve the data from the front end, cut it up and send it to the DB
-	cartData = JSON.parse(req.body.test);
-	setTimeout(function(){
-	for (var i = 0; i < cartData.length; i++) {
-		var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+ 1;
-		shop.checkoutOrder(condition,function(data){
-		})
-		}
-	},1000)
 });
 
 router.delete('/inventory/delete/:barcode', function(req,res) {
@@ -151,5 +128,76 @@ router.put('/users/update/:userId', function(req,res) {
 		res.redirect('/users');
 	});
 });
+
+router.post('/ocreate', function(req,res) {
+    //need to add the user ID where the number 1 is
+    var condition = ' ( userId, date) VALUES ('+req.session.user_id+' ,now())';
+    shop.orderCreation(condition, function(data){
+        res.redirect('/confirmation');
+    });
+});
+
+router.post('/productsfromcart', function(req,res) {
+	// we recieve the data from the front end, cut it up and send it to the DB
+		cartData = JSON.parse(req.body.test);
+
+		setTimeout(function(){
+		for (var i = 0; i < cartData.length; i++) {
+			var condition = "'"+cartData[i].barcode+"'"+','+ cartData[i].qty+','+req.session.user_id;
+			shop.checkoutOrder(condition,function(data){
+			})
+			}
+		},1000)
+	});
+
+router.get('/confirmation', function(req,res){
+	condition = req.session.user_id
+	console.log(req.session);
+	console.log(condition);
+	debugger;
+		setTimeout(function(){
+			shop.confirmationQ(condition,function(data){
+
+		var lastPurchase = data[data.length-1].orderNumber;
+		var hbrArray = []
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].orderNumber == lastPurchase) {
+							var  hbsObject = {
+								orderNumber : data[i].orderNumber,
+								barcode : data[i].barcode,
+								qty : data[i].quantityPurchased
+							}
+							hbrArray.push(hbsObject)
+			}
+		}
+		var hbsObject = {orderNumber: lastPurchase, print : hbrArray}
+		console.log(hbsObject);
+		res.render('confirmation',hbsObject);
+	})
+	// });
+
+
+// var transporter = nodemailer.createTransport('smtps://rcbtechturtle%40gmail.com:q1w2e3r4techturtle@smtp.gmail.com');
+//
+// // setup e-mail data with unicode symbols
+// var mailOptions = {
+//     from: '"Tech Turtles " <william.a.vasquez@gmail.com>', // sender address
+//     to: 'williedeus@gmail.com', // list of receivers
+//     subject: 'Thank you for your Purchase ', // Subject line
+//     text: 'Thank you for your purchase at  techturtlec ', // plaintext body
+//     html: '<b>Come again! please purchase to save the turtles</b>' // html body
+// };
+//
+// // send mail with defined transport object
+// transporter.sendMail(mailOptions, function(error, info){
+//     if(error){
+//         return console.log(error);
+//     }
+//     console.log('Message sent: ' + info.response);
+// });
+			// res.render('confirmation');
+
+},1000)
+})
 
 module.exports = router;
