@@ -150,7 +150,6 @@ router.post('/productsfromcart', function(req,res) {
 	});
 
 router.get('/confirmation', function(req,res){
-	console.log(user);
 console.log(  req.session.user_id );
 
 // var gmail = //put your gmail address,
