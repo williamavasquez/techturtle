@@ -18,7 +18,7 @@ app.get('/', function(req,res) {
       if(result.codeResult) {
           console.log("result", result.codeResult.code);
       } else {
-          console.log("not detected");
+          console.log("not detected - 1");
       }
   });
 });
